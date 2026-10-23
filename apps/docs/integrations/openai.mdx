@@ -50,7 +50,7 @@ const openai = new OpenAI()
 // Wrap client with memory - memories auto-injected into system prompts
 const client = withSupermemory(openai, {
   namespace: "user-123",     // Required: identifies the user/container
-  id: "conversation-456", // Required: groups messages into the same document 
+  id: "conversation-456", // Required: groups messages into the same document
   mode: "full",                 // "profile" | "query" | "full"
   addMemory: "always",          // "always" (default) | "never"
 })

@@ -34,8 +34,8 @@ For this tutorial, we're building a simple flow that adds incoming emails in Gma
         Since we're ingesting data here, we'll use the add document endpoint. The namespace (`gmail` here) is part of the URL.
 
         Add the following code block:
-        
-        ```python 
+
+        ```python
             import requests
 
             url = "https://api.supermemory.ai/ns/gmail/document"
@@ -51,7 +51,7 @@ For this tutorial, we're building a simple flow that adds incoming emails in Gma
             print(response.json())
         ```
 
-        The `inputData['content']` field maps to the Gmail content fetched from Zapier. 
+        The `inputData['content']` field maps to the Gmail content fetched from Zapier.
 
         ![](/images/zapier-output.png)
     </Step>
