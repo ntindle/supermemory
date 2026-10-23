@@ -1,0 +1,50 @@
+name: Factory PostgreSQL patches
+
+on:
+  pull_request:
+    paths:
+      - "patches/postgres/**"
+      - "scripts/test-supermemory-postgres.sh"
+      - ".github/workflows/factory-postgres.yml"
+      - "FORK.md"
+  push:
+    branches: [main, factory-postgres]
+    paths:
+      - "patches/postgres/**"
+      - "scripts/test-supermemory-postgres.sh"
+      - ".github/workflows/factory-postgres.yml"
+      - "FORK.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: factory-postgres-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  postgres:
+    name: PostgreSQL (Bun ${{ matrix.bun }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        bun: ["1.3.4", "1.4.0"]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: ${{ matrix.bun }}
+      - name: Lint patch shell scripts
+        run: |
+          bash -n scripts/test-supermemory-postgres.sh
+          bash -n patches/postgres/launch.sh
+          shellcheck scripts/*.sh patches/postgres/launch.sh
+      - name: Verify migration, runtime, deferred captures and bundle guards
+        run: scripts/test-supermemory-postgres.sh
+      - name: Check whitespace
+        run: git show --check --format= HEAD

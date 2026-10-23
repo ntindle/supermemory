@@ -1,3 +1,7 @@
+> **ntindle fork:** locally maintained server patches and migration tooling live in
+> [`patches/postgres/`](patches/postgres/README.md). See [FORK.md](FORK.md) for
+> maintenance and validation. The upstream project README follows.
+
 <p align="center">
   <picture>
     <source srcset="apps/web/public/logo-fullmark.svg" media="(prefers-color-scheme: dark)">

@@ -1,0 +1,18 @@
+{
+  "name": "factory-supermemory-postgres",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "bun test",
+    "format": "bunx --no-install prettier --write .",
+    "format:check": "bunx --no-install prettier --check ."
+  },
+  "dependencies": {
+    "@electric-sql/pglite": "0.3.16",
+    "@electric-sql/pglite-socket": "0.0.22",
+    "pg": "8.23.1"
+  },
+  "devDependencies": {
+    "prettier": "3.6.2"
+  }
+}
