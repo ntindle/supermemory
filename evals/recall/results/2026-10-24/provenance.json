@@ -1,0 +1,28 @@
+{
+  "sourceCommit": "3a94ffe2bc79ff4946ac7be57980b2268a176f2f",
+  "suite": "factory-recall-v2",
+  "corpusPreparedAt": "2026-10-24T14:00:07.279Z",
+  "documentsIngested": 21,
+  "distinctServerDocumentIds": 21,
+  "fixtureDocumentsDeleted": 1,
+  "runtime": {
+    "bun": "1.4.0",
+    "platform": "linux",
+    "arch": "x64"
+  },
+  "serverImage": "ghcr.io/ntindle/unraid-apps/supermemory@sha256:bfc389230f57c4a4425e9119fbffdc4806db9bd72dec97bbc18daed0615d6227",
+  "databaseImage": "pgvector/pgvector@sha256:ac08538c6f8b9904c33c8224c5e5706dbe760aca29db1d096972b4052c22a75d",
+  "resources": {
+    "host": "Linux x64 VM",
+    "appMemoryGiB": 3,
+    "appCPUQuota": 2,
+    "databaseMemoryGiB": 1,
+    "databaseCPUQuota": 2
+  },
+  "retrievalRequests": 216,
+  "differentRetrievalsAcrossRepeats": [],
+  "productionDataUsed": false,
+  "productionRuntimeChanged": false,
+  "pilotNamespacesRetained": true,
+  "sampling": "One stochastic ingestion per corpus; one reader/judge sample per question/mode; three seeded retrieval repeats. No warm-up. All conditions share the same prepared v2 corpus."
+}

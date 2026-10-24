@@ -2,7 +2,7 @@ import { chat, JUDGE_PROMPT, parseJudgment } from "./prompts.ts";
 import { hash, writeJson } from "./util.ts";
 import type { Config } from "./types.ts";
 
-// Human-labelled checks catch a broken/permissive grader before its scores are
+// Explicit expected labels catch a broken/permissive grader before its scores are
 // trusted. Passing these is a smoke calibration, not independent human review.
 export const CALIBRATION = [
   {

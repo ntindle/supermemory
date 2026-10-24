@@ -5,6 +5,9 @@ we retrieve the right source documents **and** whether a fixed reader can answer
 from the returned context. Run before and after a proposed memory change, using
 the same corpus, questions, reader, judge and context budget.
 
+[First measured baseline (2026-10-24)](results/2026-10-24/README.md): all five
+conditions, failure analysis, calibration, comparison intervals and JSON artifacts.
+
 The initial suite has **21 synthetic documents, 24 questions and six independent
 memory spaces**. It covers changed preferences/settings, historical questions,
 multi-document answers, exact identifiers, negation, duplicates, scope isolation,
@@ -43,6 +46,10 @@ provenance, so its source scores describe only the endpoint's search results.
 Canaries detect selected profile leaks; their absence is not a complete security
 proof. Deleted fixtures test the API's actual removal behavior.
 
+`abstentionAccuracy` requires both a correct judgment and the explicit reader
+`abstain` flag. A semantically correct “not recorded” answer with that flag set
+false can pass answer accuracy while failing this stricter contract check.
+
 ## Conditions and controls
 
 - `profile`: `/v4/profile` static + dynamic profile, followed by query results.
@@ -62,8 +69,10 @@ sample feeds QA and all three contribute latency. There is no separate warm-up.
 The reader receives only the question and context. Only the judge sees the
 reference answer. Reader/judge models and prompts are fixed across conditions.
 Malformed, truncated or failed responses are errors, never guessed scores.
-Eight human-labelled calibration cases exercise the judge before trusting a run.
+Eight fixed calibration cases exercise the judge before trusting a run.
 LLM judgments are still fallible; inspect failures and the oracle/control scores.
+Model IDs may be provider aliases, and inference/extraction is stochastic. This
+records repeatable conditions, not a guarantee of identical generated outputs.
 
 ## Run on a disposable copy
 
@@ -147,6 +156,9 @@ each result. Reusing the same output directory resumes unfinished work without
 regrading completed cases, including errors. To retry errors, retain the failed
 run and repeat the whole comparison in a new output directory; do not keep only
 the best answers. Do not share private traces or inputs from non-synthetic suites.
+
+Run only one process per corpus/output directory; simultaneous writers are not
+supported. Use distinct directories and run IDs for concurrent experiments.
 
 `compare` refuses missing cases, evaluator/model/budget drift, errors and isolation
 failures. The default requires one prepared corpus. For explicit extraction/model
