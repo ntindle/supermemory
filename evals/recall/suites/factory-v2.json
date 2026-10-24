@@ -1,0 +1,418 @@
+{
+  "schema": 1,
+  "id": "factory-recall-v2",
+  "description": "Synthetic operational and personal-memory regression set. Not a LoCoMo or LongMemEval leaderboard score. Gold answers are never included in ingestion or reader prompts.",
+  "documents": [
+    {
+      "id": "d01",
+      "space": "orbit",
+      "date": "2026-08-01",
+      "content": "Project Orbit archive service uses port 6427. At this time its maintainer is Iris. The namespace verification phrase is ORBIT_ONLY_CEDAR_731."
+    },
+    {
+      "id": "d02",
+      "space": "orbit",
+      "date": "2026-09-20",
+      "content": "Decision effective 20 September 2026: Project Orbit archive service now uses port 7531, replacing port 6427. Iris handed maintenance to Mara, who is the current maintainer. The old port must no longer be used."
+    },
+    {
+      "id": "d03",
+      "space": "orbit",
+      "date": "2026-09-21",
+      "content": "Project Orbit database backups run every Tuesday at 02:35 UTC. Keep each completed backup for 29 days. The restore verification phrase is COBALT-271."
+    },
+    {
+      "id": "d04",
+      "space": "orbit",
+      "date": "2026-09-22",
+      "content": "Project Orbit deployment policy permits releases on Tuesday and Thursday only. Friday deployments are prohibited, even for routine changes. Every release requires a signed artifact."
+    },
+    {
+      "id": "d05",
+      "space": "orbit",
+      "date": "2026-09-23",
+      "content": "In Project Orbit configuration, CacheTTL is the cache expiration setting and has value 83 seconds. The identifier cacheTtl is a separate experimental field and must not be used in production. The rollback release label is AMBER-72."
+    },
+    {
+      "id": "d06",
+      "space": "orbit",
+      "date": "2026-09-24",
+      "content": "Project Orbit metrics exporter listens on port 9418. Its dashboard listens on port 3056. Neither port is the archive service port. The database retention setting is unrelated to cache expiration."
+    },
+    {
+      "id": "d07",
+      "space": "beacon",
+      "date": "2026-09-20",
+      "content": "Project Beacon archive service listens on port 8663 and is maintained by Niko. The private namespace verification phrase for this project is BEACON_ONLY_TULIP_428."
+    },
+    {
+      "id": "d08",
+      "space": "beacon",
+      "date": "2026-09-21",
+      "content": "Project Beacon backups run on Saturday at 04:10 UTC and are retained for 17 days. Its recovery label is INDIGO-638."
+    },
+    {
+      "id": "d09",
+      "space": "beacon",
+      "date": "2026-09-22",
+      "content": "Project Beacon permits Friday releases. Its independent release policy must not be applied to Project Orbit. Beacon uses the exact feature switch enableArchiveV2, which is currently false."
+    },
+    {
+      "id": "d10",
+      "space": "personal",
+      "date": "2026-08-05",
+      "content": "Ren previously preferred status updates by email. Ren chose light mode for the dashboard in August. PERSONAL_ONLY_IVORY_562 identifies this notebook."
+    },
+    {
+      "id": "d11",
+      "space": "personal",
+      "date": "2026-09-25",
+      "content": "Ren changed their preferences today: status updates should now arrive in chat, not email. Ren now prefers dark mode, replacing the August light-mode preference. Use concise numbered steps when explaining a procedure."
+    },
+    {
+      "id": "d12",
+      "space": "personal",
+      "date": "2026-09-26",
+      "content": "Ren has a regular climbing lesson on Wednesday at 18:20. Ren drinks decaffeinated coffee. No allergy information has been recorded in this notebook."
+    },
+    {
+      "id": "d13",
+      "space": "travel",
+      "date": "2026-08-10",
+      "content": "For the autumn retreat, the initial destination was Bergen. The planned departure date was 12 October 2026. TRAVEL_ONLY_OPAL_934 identifies this notebook."
+    },
+    {
+      "id": "d14",
+      "space": "travel",
+      "date": "2026-09-27",
+      "content": "The autumn retreat destination has changed to Porto. The updated departure date is 19 October 2026, replacing the earlier Bergen trip on 12 October. The trip booking reference is PINE-593."
+    },
+    {
+      "id": "d15",
+      "space": "travel",
+      "date": "2026-09-28",
+      "content": "Ren will take the train from the airport to the hotel in Porto. The hotel check-in time is 16:40. The airline baggage allowance is 21 kilograms."
+    },
+    {
+      "id": "d16",
+      "space": "release",
+      "date": "2026-09-16",
+      "content": "The release approval code for Project Quartz is MAPLE-482. The release coordinator is Solene. RELEASE_ONLY_JADE_817 identifies the Quartz notebook."
+    },
+    {
+      "id": "d17",
+      "space": "release",
+      "date": "2026-09-17",
+      "content": "The release approval code for Project Quartz is MAPLE-482. The release coordinator is Solene. RELEASE_ONLY_JADE_817 identifies the Quartz notebook."
+    },
+    {
+      "id": "d18",
+      "space": "release",
+      "date": "2026-09-18",
+      "content": "The release approval code for Project Quartz is MAPLE-482. The release coordinator is Solene. RELEASE_ONLY_JADE_817 identifies the Quartz notebook."
+    },
+    {
+      "id": "d19",
+      "space": "release",
+      "date": "2026-09-20",
+      "content": "Project Quartz sandbox test data contains the lookalike code MAPLE-842. This code is not the release approval code and must never be used for approval."
+    },
+    {
+      "id": "d20",
+      "space": "retired",
+      "date": "2026-09-15",
+      "content": "The temporary Project Drift unlock code is SILVER-FOX-619. This code is temporary and the entire source will later be explicitly removed.",
+      "forget": true
+    },
+    {
+      "id": "d21",
+      "space": "retired",
+      "date": "2026-09-16",
+      "content": "Project Drift was retired. No current unlock code is recorded. The permanent inventory tag is DRIFT-Inventory-37. RETIRED_ONLY_PEARL_286 identifies this notebook."
+    }
+  ],
+  "questions": [
+    {
+      "id": "q01",
+      "space": "orbit",
+      "category": "knowledge-update",
+      "split": "development",
+      "question": "Which port should I use for the Project Orbit archive service now?",
+      "answer": "7531",
+      "sources": {
+        "d02": 2
+      },
+      "staleTokens": ["6427"]
+    },
+    {
+      "id": "q02",
+      "space": "orbit",
+      "category": "knowledge-update",
+      "split": "holdout",
+      "question": "Who currently maintains the Orbit archive service?",
+      "answer": "Mara",
+      "sources": {
+        "d02": 2
+      },
+      "staleTokens": ["Iris"]
+    },
+    {
+      "id": "q03",
+      "space": "orbit",
+      "category": "multi-session",
+      "split": "development",
+      "question": "What is Orbit's current maintainer's name, and what is the restore verification phrase?",
+      "answer": "Mara; COBALT-271.",
+      "sources": {
+        "d02": 2,
+        "d03": 2
+      }
+    },
+    {
+      "id": "q04",
+      "space": "orbit",
+      "category": "temporal",
+      "split": "holdout",
+      "question": "Which archive port did Project Orbit use on 1 August 2026?",
+      "answer": "6427",
+      "sources": {
+        "d01": 2
+      }
+    },
+    {
+      "id": "q05",
+      "space": "orbit",
+      "category": "direct",
+      "split": "development",
+      "question": "When do Orbit backups run and how long are they retained?",
+      "answer": "Tuesday at 02:35 UTC; 29 days.",
+      "sources": {
+        "d03": 2
+      }
+    },
+    {
+      "id": "q06",
+      "space": "orbit",
+      "category": "negation",
+      "split": "holdout",
+      "question": "Can I do a routine Project Orbit deployment on Friday?",
+      "answer": "No. Friday deployments are prohibited, including routine changes.",
+      "sources": {
+        "d04": 2
+      }
+    },
+    {
+      "id": "q07",
+      "space": "orbit",
+      "category": "identifier",
+      "split": "development",
+      "question": "Give the exact production cache expiration key and its value for Orbit.",
+      "answer": "CacheTTL = 83 seconds; not cacheTtl.",
+      "sources": {
+        "d05": 2
+      }
+    },
+    {
+      "id": "q08",
+      "space": "orbit",
+      "category": "multi-session",
+      "split": "holdout",
+      "question": "Which rollback label should Mara use, and what artifact requirement applies?",
+      "answer": "AMBER-72; the artifact must be signed.",
+      "sources": {
+        "d04": 2,
+        "d05": 2
+      }
+    },
+    {
+      "id": "q09",
+      "space": "beacon",
+      "category": "scope",
+      "split": "development",
+      "question": "What port does Beacon use for its archive, and who maintains it?",
+      "answer": "8663; Niko.",
+      "sources": {
+        "d07": 2
+      }
+    },
+    {
+      "id": "q10",
+      "space": "beacon",
+      "category": "scope",
+      "split": "holdout",
+      "question": "What is the Beacon recovery label and backup retention period?",
+      "answer": "INDIGO-638; 17 days.",
+      "sources": {
+        "d08": 2
+      }
+    },
+    {
+      "id": "q11",
+      "space": "beacon",
+      "category": "negation",
+      "split": "development",
+      "question": "Is enableArchiveV2 enabled in Beacon?",
+      "answer": "No. enableArchiveV2 is false.",
+      "sources": {
+        "d09": 2
+      }
+    },
+    {
+      "id": "q12",
+      "space": "orbit",
+      "category": "abstention",
+      "split": "holdout",
+      "question": "What is Project Beacon\u2019s private namespace verification phrase?",
+      "answer": "The supplied Orbit context does not contain that information.",
+      "sources": {},
+      "unanswerable": true
+    },
+    {
+      "id": "q13",
+      "space": "personal",
+      "category": "preference",
+      "split": "development",
+      "question": "How should status updates be delivered to Ren now?",
+      "answer": "In chat, not email.",
+      "sources": {
+        "d11": 2
+      },
+      "staleTokens": ["email"]
+    },
+    {
+      "id": "q14",
+      "space": "personal",
+      "category": "knowledge-update",
+      "split": "holdout",
+      "question": "Which dashboard appearance does Ren currently prefer?",
+      "answer": "Dark mode.",
+      "sources": {
+        "d11": 2
+      },
+      "staleTokens": ["light mode"]
+    },
+    {
+      "id": "q15",
+      "space": "personal",
+      "category": "preference",
+      "split": "development",
+      "question": "How should procedural instructions for Ren be formatted?",
+      "answer": "As concise numbered steps.",
+      "sources": {
+        "d11": 2
+      }
+    },
+    {
+      "id": "q16",
+      "space": "personal",
+      "category": "abstention",
+      "split": "holdout",
+      "question": "What allergies does Ren have?",
+      "answer": "No allergy information is recorded.",
+      "sources": {},
+      "unanswerable": true
+    },
+    {
+      "id": "q17",
+      "space": "travel",
+      "category": "knowledge-update",
+      "split": "development",
+      "question": "What is the current retreat destination and departure date?",
+      "answer": "Porto, 19 October 2026.",
+      "sources": {
+        "d14": 2
+      },
+      "staleTokens": ["Bergen", "12 October"]
+    },
+    {
+      "id": "q18",
+      "space": "travel",
+      "category": "temporal",
+      "split": "holdout",
+      "question": "What was the retreat plan as of 10 August 2026?",
+      "answer": "Bergen, departing 12 October 2026.",
+      "sources": {
+        "d13": 2
+      }
+    },
+    {
+      "id": "q19",
+      "space": "travel",
+      "category": "multi-session",
+      "split": "development",
+      "question": "Give the current booking reference, hotel check-in time, and baggage allowance.",
+      "answer": "PINE-593; 16:40; 21 kilograms.",
+      "sources": {
+        "d14": 2,
+        "d15": 2
+      }
+    },
+    {
+      "id": "q20",
+      "space": "release",
+      "category": "duplicates",
+      "split": "holdout",
+      "question": "What is the real release approval code for Project Quartz?",
+      "answer": "MAPLE-482, not the sandbox lookalike MAPLE-842.",
+      "sources": {
+        "d16": 2,
+        "d17": 2,
+        "d18": 2
+      },
+      "staleTokens": ["MAPLE-842"]
+    },
+    {
+      "id": "q21",
+      "space": "release",
+      "category": "direct",
+      "split": "development",
+      "question": "Who coordinates the Project Quartz release?",
+      "answer": "Solene.",
+      "sources": {
+        "d16": 2,
+        "d17": 2,
+        "d18": 2
+      }
+    },
+    {
+      "id": "q22",
+      "space": "retired",
+      "category": "forgotten",
+      "split": "holdout",
+      "question": "What is the temporary Project Drift unlock code?",
+      "answer": "The unlock code is unavailable; its source was removed.",
+      "sources": {},
+      "unanswerable": true,
+      "staleTokens": ["SILVER-FOX-619"]
+    },
+    {
+      "id": "q23",
+      "space": "personal",
+      "category": "direct",
+      "split": "development",
+      "question": "When is Ren\u2019s regular climbing lesson?",
+      "answer": "Wednesday at 18:20.",
+      "sources": {
+        "d12": 2
+      }
+    },
+    {
+      "id": "q24",
+      "space": "travel",
+      "category": "abstention",
+      "split": "holdout",
+      "question": "What is Ren\u2019s passport number?",
+      "answer": "The supplied context does not contain a passport number.",
+      "sources": {},
+      "unanswerable": true
+    }
+  ],
+  "canaries": {
+    "orbit": "ORBIT_ONLY_CEDAR_731",
+    "beacon": "BEACON_ONLY_TULIP_428",
+    "personal": "PERSONAL_ONLY_IVORY_562",
+    "travel": "TRAVEL_ONLY_OPAL_934",
+    "release": "RELEASE_ONLY_JADE_817",
+    "retired": "RETIRED_ONLY_PEARL_286"
+  }
+}

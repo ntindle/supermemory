@@ -1,0 +1,114 @@
+{
+  "judge": "gpt-6.1-sol",
+  "reasoningEffort": "low",
+  "judgePromptHash": "607a8edda7125e453710ed50138f1b25784d0357ce200bd7e9014273ab036d75",
+  "calibrationHash": "ca03beb3af7485bc7297ad6716e705f13014a9146897b9771099aee0ba00f6ab",
+  "passed": 8,
+  "total": 8,
+  "results": [
+    {
+      "id": "correct-exact",
+      "expected": {
+        "correct": true,
+        "grounded": true
+      },
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer exactly matches the reference code and is explicitly supported by d1."
+      },
+      "passed": true
+    },
+    {
+      "id": "wrong-exact",
+      "expected": {
+        "correct": false,
+        "grounded": false
+      },
+      "judgment": {
+        "correct": false,
+        "grounded": false,
+        "explanation": "The response gives OAK-472, but both the reference and context specify OAK-427."
+      },
+      "passed": true
+    },
+    {
+      "id": "unsupported-guess",
+      "expected": {
+        "correct": true,
+        "grounded": false
+      },
+      "judgment": {
+        "correct": true,
+        "grounded": false,
+        "explanation": "The answer matches the reference exactly, but the empty context does not support it."
+      },
+      "passed": true
+    },
+    {
+      "id": "proper-abstention",
+      "expected": {
+        "correct": true,
+        "grounded": true
+      },
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The response appropriately abstains; the context contains no passport number."
+      },
+      "passed": true
+    },
+    {
+      "id": "invented-answer",
+      "expected": {
+        "correct": false,
+        "grounded": false
+      },
+      "judgment": {
+        "correct": false,
+        "grounded": false,
+        "explanation": "The passport number is unknown from the context. The response invents P427 instead of abstaining; d1 only states a train departure time."
+      },
+      "passed": true
+    },
+    {
+      "id": "negation",
+      "expected": {
+        "correct": false,
+        "grounded": false
+      },
+      "judgment": {
+        "correct": false,
+        "grounded": false,
+        "explanation": "The answer contradicts both the reference and context, which explicitly prohibit Friday releases."
+      },
+      "passed": true
+    },
+    {
+      "id": "stale-value",
+      "expected": {
+        "correct": false,
+        "grounded": false
+      },
+      "judgment": {
+        "correct": false,
+        "grounded": false,
+        "explanation": "The current port is 7531; the context explicitly identifies 6427 as the old port."
+      },
+      "passed": true
+    },
+    {
+      "id": "incomplete",
+      "expected": {
+        "correct": false,
+        "grounded": true
+      },
+      "judgment": {
+        "correct": false,
+        "grounded": true,
+        "explanation": "The answer correctly identifies Mara and is supported by the context, but omits the requested port, 7531."
+      },
+      "passed": true
+    }
+  ]
+}

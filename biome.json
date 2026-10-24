@@ -19,6 +19,7 @@
 		"includes": [
 			"**",
 			"!patches/postgres/**",
+			"!evals/recall/**",
 			"!**/node_modules/",
 			"!**/.next/",
 			"!**/.contentlayer/",

@@ -1,0 +1,4365 @@
+{
+  "schema": 1,
+  "createdAt": "2026-10-24T14:00:07.435Z",
+  "protocol": {
+    "policy": "factory-recall-v2",
+    "harnessHash": "1cda3f2cda439e4d4a7ab9884636800b2e1bbb796657b6feef8114cdcf443b9e",
+    "suiteHash": "0ec07a9ae8480d29354690c0e36e7158b26e89cb50c21f77c049a0f522fa6d0e",
+    "questionIds": [
+      "q01",
+      "q02",
+      "q03",
+      "q04",
+      "q05",
+      "q06",
+      "q07",
+      "q08",
+      "q09",
+      "q10",
+      "q11",
+      "q12",
+      "q13",
+      "q14",
+      "q15",
+      "q16",
+      "q17",
+      "q18",
+      "q19",
+      "q20",
+      "q21",
+      "q22",
+      "q23",
+      "q24"
+    ],
+    "reader": {
+      "model": "gpt-5.6-luna",
+      "endpointHash": "b0dd947072ef1d19f125ef2b8ad67dee127fd5a68ee98875f3e459b7dc7e40a0",
+      "reasoningEffort": "low",
+      "maxTokens": 4096
+    },
+    "judge": {
+      "model": "gpt-6.1-sol",
+      "endpointHash": "b0dd947072ef1d19f125ef2b8ad67dee127fd5a68ee98875f3e459b7dc7e40a0",
+      "reasoningEffort": "low",
+      "maxTokens": 4096
+    },
+    "readerPromptHash": "aef800b43f01e1394036b1fe288cf61d34c346e1be4ffe8b16ec44c2aeb91b9c",
+    "judgePromptHash": "607a8edda7125e453710ed50138f1b25784d0357ce200bd7e9014273ab036d75",
+    "tokenizer": "js-tiktoken@1.0.21/cl100k_base",
+    "topK": 10,
+    "threshold": 0.6,
+    "contextTokens": 2200,
+    "repeats": 3,
+    "seed": 20261024
+  },
+  "corpusId": "f367fc8fe461492d81e6459d923952f4",
+  "deployment": {
+    "image": "ghcr.io/ntindle/unraid-apps/supermemory@sha256:bfc389230f57c4a4425e9119fbffdc4806db9bd72dec97bbc18daed0615d6227",
+    "extractionModel": "gpt-5.6-luna",
+    "embeddingModel": "Xenova/bge-base-en-v1.5/768"
+  },
+  "modes": ["profile", "memories", "hybrid", "closed-book", "oracle"],
+  "runtime": {
+    "bun": "1.4.0",
+    "platform": "linux",
+    "arch": "x64"
+  },
+  "rows": [
+    {
+      "id": "q01",
+      "space": "orbit",
+      "category": "knowledge-update",
+      "split": "development",
+      "mode": "profile",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [40.86773900000003, 38.53297300000031, 40.609410000000025],
+      "retrieval": {
+        "recall5": 1,
+        "recall10": 1,
+        "mrr": 1,
+        "ndcg10": 1,
+        "duplicateRate": 0
+      },
+      "contextTokens": 782,
+      "contextHash": "f1f093bffa71f74b7e8cb3df7a39266f217a589231d7208690e19fbb4d65db5f",
+      "staleContext": true,
+      "readerMs": 1505.9684400000006,
+      "modelUsage": {
+        "promptTokens": 2622,
+        "completionTokens": 93
+      },
+      "answer": {
+        "answer": "Use port 7531 for the Project Orbit archive service. Port 6427 is no longer valid.",
+        "abstain": false,
+        "citations": ["d02"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2953.535151,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer gives the correct current port, 7531. The context explicitly supports both its replacement of port 6427 and the instruction to stop using 6427."
+      }
+    },
+    {
+      "id": "q02",
+      "space": "orbit",
+      "category": "knowledge-update",
+      "split": "holdout",
+      "mode": "profile",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [30.91766700000005, 32.97962899999993, 33.90545999999995],
+      "retrieval": {
+        "recall5": 1,
+        "recall10": 1,
+        "mrr": 1,
+        "ndcg10": 1,
+        "duplicateRate": 0
+      },
+      "contextTokens": 783,
+      "contextHash": "4e97308140ac9dc4845eb8a1b474369354cffdf42ae964d9736e423266376e0a",
+      "staleContext": true,
+      "readerMs": 2575.327925999998,
+      "modelUsage": {
+        "promptTokens": 2594,
+        "completionTokens": 64
+      },
+      "answer": {
+        "answer": "Mara",
+        "abstain": false,
+        "citations": ["d02"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 3003.5489109999908,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer matches the reference, and the context explicitly identifies Mara as the current maintainer of Orbit's archive service."
+      }
+    },
+    {
+      "id": "q03",
+      "space": "orbit",
+      "category": "multi-session",
+      "split": "development",
+      "mode": "profile",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [44.18091000000004, 45.899789000000055, 47.96578000000045],
+      "retrieval": {
+        "recall5": 1,
+        "recall10": 1,
+        "mrr": 1,
+        "ndcg10": 0.9197207891481876,
+        "duplicateRate": 0
+      },
+      "contextTokens": 757,
+      "contextHash": "f342b05e50e01c5a052c2af8d5fb8d07f9349c5023cbd94ea8051ecdab9de4ef",
+      "staleContext": false,
+      "readerMs": 2370.7843859999557,
+      "modelUsage": {
+        "promptTokens": 2588,
+        "completionTokens": 120
+      },
+      "answer": {
+        "answer": "Orbit's current maintainer is Mara, and the restore verification phrase is COBALT-271.",
+        "abstain": false,
+        "citations": ["d02", "d03"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2091.6105540000135,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer matches the reference: Mara and COBALT-271. Both facts are explicitly supported by the supplied context."
+      }
+    },
+    {
+      "id": "q04",
+      "space": "orbit",
+      "category": "temporal",
+      "split": "holdout",
+      "mode": "profile",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [36.80406700000003, 53.54321299999992, 38.57882199999949],
+      "retrieval": {
+        "recall5": 0,
+        "recall10": 0,
+        "mrr": 0,
+        "ndcg10": 0,
+        "duplicateRate": 0
+      },
+      "contextTokens": 575,
+      "contextHash": "3003d9a4ed1ad2dcc942ae56e521836272bc645c3e7925d5d92871f6b01cdf25",
+      "staleContext": false,
+      "readerMs": 2484.255763000001,
+      "modelUsage": {
+        "promptTokens": 2168,
+        "completionTokens": 140
+      },
+      "answer": {
+        "answer": "Project Orbit used archive port 6427 on 1 August 2026.",
+        "abstain": false,
+        "citations": ["profile"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 3442.0531159999955,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer matches the reference. The context states that port 7531 replaced archive port 6427 effective 20 September 2026, supporting 6427 as the port on 1 August 2026."
+      }
+    },
+    {
+      "id": "q05",
+      "space": "orbit",
+      "category": "direct",
+      "split": "development",
+      "mode": "profile",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [43.66240999999991, 39.13873599999988, 38.941297000000304],
+      "retrieval": {
+        "recall5": 1,
+        "recall10": 1,
+        "mrr": 1,
+        "ndcg10": 1,
+        "duplicateRate": 0
+      },
+      "contextTokens": 778,
+      "contextHash": "cb88570afb0af38805b61c4c200473989a06402b4d47f15290ac7958ef977ebd",
+      "staleContext": false,
+      "readerMs": 1506.2064170000003,
+      "modelUsage": {
+        "promptTokens": 2616,
+        "completionTokens": 84
+      },
+      "answer": {
+        "answer": "Orbit database backups run every Tuesday at 02:35 UTC and are retained for 29 days.",
+        "abstain": false,
+        "citations": ["d03"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 4061.3497640000005,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer matches the reference, and the context explicitly supports both the Tuesday 02:35 UTC schedule and 29-day retention."
+      }
+    },
+    {
+      "id": "q06",
+      "space": "orbit",
+      "category": "negation",
+      "split": "holdout",
+      "mode": "profile",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [36.748177999999825, 38.87049699999989, 41.1562440000007],
+      "retrieval": {
+        "recall5": 1,
+        "recall10": 1,
+        "mrr": 1,
+        "ndcg10": 1,
+        "duplicateRate": 0
+      },
+      "contextTokens": 745,
+      "contextHash": "6e9d162c049cf68a9fb71f6a1793695be2d3c31cf73115f4bd8d25dec830db96",
+      "staleContext": false,
+      "readerMs": 1588.1453420000034,
+      "modelUsage": {
+        "promptTokens": 2543,
+        "completionTokens": 76
+      },
+      "answer": {
+        "answer": "No. Project Orbit's deployment policy prohibits releases on Fridays, including routine changes.",
+        "abstain": false,
+        "citations": ["d04"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2344.8815030000114,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer matches the reference and is explicitly supported by the context: Friday releases are prohibited, including routine changes."
+      }
+    },
+    {
+      "id": "q07",
+      "space": "orbit",
+      "category": "identifier",
+      "split": "development",
+      "mode": "profile",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [38.33522300000004, 39.517141999999694, 41.80746700000054],
+      "retrieval": {
+        "recall5": 1,
+        "recall10": 1,
+        "mrr": 1,
+        "ndcg10": 1,
+        "duplicateRate": 0
+      },
+      "contextTokens": 755,
+      "contextHash": "ae063a385bdec7522b4a6605b8b20c22e649d165d5e2b2ee30741ddc6c0479ac",
+      "staleContext": false,
+      "readerMs": 2479.164644000004,
+      "modelUsage": {
+        "promptTokens": 2557,
+        "completionTokens": 105
+      },
+      "answer": {
+        "answer": "CacheTTL = 83 seconds.",
+        "abstain": false,
+        "citations": ["d05"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2646.829587,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer gives the exact case-sensitive key CacheTTL and value 83 seconds, both explicitly supported by the context."
+      }
+    },
+    {
+      "id": "q08",
+      "space": "orbit",
+      "category": "multi-session",
+      "split": "holdout",
+      "mode": "profile",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [38.994147999999996, 44.39361000000008, 48.58096800000021],
+      "retrieval": {
+        "recall5": 1,
+        "recall10": 1,
+        "mrr": 1,
+        "ndcg10": 1,
+        "duplicateRate": 0
+      },
+      "contextTokens": 669,
+      "contextHash": "6e26e3923798186e24f704742e33ad3199f555ea589202edbee53c53f0e3a6ba",
+      "staleContext": false,
+      "readerMs": 2236.496757000001,
+      "modelUsage": {
+        "promptTokens": 2388,
+        "completionTokens": 110
+      },
+      "answer": {
+        "answer": "Mara should use rollback release label AMBER-72. The release must include a signed artifact.",
+        "abstain": false,
+        "citations": ["d05", "d04"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2243.276991000006,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer gives the exact rollback label AMBER-72 and the signed-artifact requirement, both explicitly supported by the context."
+      }
+    },
+    {
+      "id": "q09",
+      "space": "beacon",
+      "category": "scope",
+      "split": "development",
+      "mode": "profile",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [40.42613000000006, 46.19079299999976, 42.33045799999945],
+      "retrieval": {
+        "recall5": 1,
+        "recall10": 1,
+        "mrr": 1,
+        "ndcg10": 1,
+        "duplicateRate": 0
+      },
+      "contextTokens": 393,
+      "contextHash": "220fc0006b6925953704763d8fdba94fa0fbfd362da13a7da7fdf11e402f8676",
+      "staleContext": false,
+      "readerMs": 1605.6079140000002,
+      "modelUsage": {
+        "promptTokens": 1817,
+        "completionTokens": 80
+      },
+      "answer": {
+        "answer": "Beacon's archive service listens on port 8663, and Niko maintains it.",
+        "abstain": false,
+        "citations": ["profile", "d07"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 3852.092066000001,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer gives port 8663 and maintainer Niko, matching the reference and explicitly supported by the context."
+      }
+    },
+    {
+      "id": "q10",
+      "space": "beacon",
+      "category": "scope",
+      "split": "holdout",
+      "mode": "profile",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [35.919974000000025, 38.635847999999896, 37.493507000000136],
+      "retrieval": {
+        "recall5": 1,
+        "recall10": 1,
+        "mrr": 1,
+        "ndcg10": 1,
+        "duplicateRate": 0
+      },
+      "contextTokens": 393,
+      "contextHash": "b26e43464163f6e102066b960711e81bd138557f416d61c702a66db2d201130a",
+      "staleContext": false,
+      "readerMs": 1569.7465389999998,
+      "modelUsage": {
+        "promptTokens": 1816,
+        "completionTokens": 85
+      },
+      "answer": {
+        "answer": "The Beacon recovery label is INDIGO-638, and backups are retained for 17 days.",
+        "abstain": false,
+        "citations": ["profile", "d08"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2342.068922000006,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer gives the exact recovery label INDIGO-638 and retention period of 17 days, both explicitly supported by the context."
+      }
+    },
+    {
+      "id": "q11",
+      "space": "beacon",
+      "category": "negation",
+      "split": "development",
+      "mode": "profile",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [35.851982999999905, 39.849740000000565, 37.725728000000345],
+      "retrieval": {
+        "recall5": 1,
+        "recall10": 1,
+        "mrr": 1,
+        "ndcg10": 1,
+        "duplicateRate": 0
+      },
+      "contextTokens": 380,
+      "contextHash": "3f299fcf38021af9aaf9d05dc6965c159008e1956a957358b689044f4bec0ffd",
+      "staleContext": false,
+      "readerMs": 3662.5455190000066,
+      "modelUsage": {
+        "promptTokens": 1776,
+        "completionTokens": 75
+      },
+      "answer": {
+        "answer": "No. In Beacon, enableArchiveV2 is currently false.",
+        "abstain": false,
+        "citations": ["profile", "d09"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2137.6486779999977,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer matches the reference and the context explicitly states that Beacon's enableArchiveV2 feature switch is false."
+      }
+    },
+    {
+      "id": "q12",
+      "space": "orbit",
+      "category": "abstention",
+      "split": "holdout",
+      "mode": "profile",
+      "unanswerable": true,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [38.82939600000009, 48.370986999999786, 38.30883799999992],
+      "retrieval": {
+        "recall5": null,
+        "recall10": null,
+        "mrr": null,
+        "ndcg10": null,
+        "duplicateRate": 0
+      },
+      "contextTokens": 723,
+      "contextHash": "75b0cb9180f7f0987f8d03dd9ebe4a59bcb247e3c45ad5478a276f54505367f9",
+      "staleContext": false,
+      "readerMs": 2483.6904400000058,
+      "modelUsage": {
+        "promptTokens": 2488,
+        "completionTokens": 96
+      },
+      "answer": {
+        "answer": "The supplied context does not specify Project Beacon’s private namespace verification phrase.",
+        "abstain": true,
+        "citations": []
+      },
+      "invalidCitations": false,
+      "judgeMs": 2664.1589889999887,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The response correctly abstains: the context provides Project Orbit’s verification phrases but no private namespace verification phrase for Project Beacon."
+      }
+    },
+    {
+      "id": "q13",
+      "space": "personal",
+      "category": "preference",
+      "split": "development",
+      "mode": "profile",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [36.18149200000016, 35.40106500000002, 35.70299299999988],
+      "retrieval": {
+        "recall5": 1,
+        "recall10": 1,
+        "mrr": 1,
+        "ndcg10": 1,
+        "duplicateRate": 0
+      },
+      "contextTokens": 180,
+      "contextHash": "0ec839c64dea1377bd9c5d066ff50bf5520a74dcb3446a56ef8dbaa05ff18eb3",
+      "staleContext": true,
+      "readerMs": 1609.2650940000021,
+      "modelUsage": {
+        "promptTokens": 1329,
+        "completionTokens": 78
+      },
+      "answer": {
+        "answer": "Status updates should now be delivered in chat rather than by email.",
+        "abstain": false,
+        "citations": ["profile", "d11"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2847.730423000001,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer matches the reference and is directly supported by the context: Ren now prefers status updates in chat rather than by email."
+      }
+    },
+    {
+      "id": "q14",
+      "space": "personal",
+      "category": "knowledge-update",
+      "split": "holdout",
+      "mode": "profile",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [30.348207000000002, 38.87471599999981, 35.839664000000084],
+      "retrieval": {
+        "recall5": 1,
+        "recall10": 1,
+        "mrr": 1,
+        "ndcg10": 1,
+        "duplicateRate": 0
+      },
+      "contextTokens": 194,
+      "contextHash": "490f82e747df001cd5a5fe0152b47039a1afa97baf9b642cd294fd4411b8e765",
+      "staleContext": true,
+      "readerMs": 1586.4230020000032,
+      "modelUsage": {
+        "promptTokens": 1347,
+        "completionTokens": 68
+      },
+      "answer": {
+        "answer": "Ren currently prefers dark mode.",
+        "abstain": false,
+        "citations": ["profile", "d11"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2421.678006999995,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer matches the reference, and the context explicitly states that Ren now prefers dark mode instead of light mode."
+      }
+    },
+    {
+      "id": "q15",
+      "space": "personal",
+      "category": "preference",
+      "split": "development",
+      "mode": "profile",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [33.93177999999989, 33.58787500000017, 35.81846099999984],
+      "retrieval": {
+        "recall5": 1,
+        "recall10": 1,
+        "mrr": 1,
+        "ndcg10": 1,
+        "duplicateRate": 0
+      },
+      "contextTokens": 159,
+      "contextHash": "b63c17eaee704f406defeb66446bcc66292f0db5b26a56f0e2fde5090de298a5",
+      "staleContext": false,
+      "readerMs": 1430.6623360000012,
+      "modelUsage": {
+        "promptTokens": 1278,
+        "completionTokens": 71
+      },
+      "answer": {
+        "answer": "Procedural instructions for Ren should be formatted as concise numbered steps.",
+        "abstain": false,
+        "citations": ["d11"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 25166.660941999995,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer matches the reference and is directly supported by the context stating that Ren prefers concise numbered steps."
+      }
+    },
+    {
+      "id": "q16",
+      "space": "personal",
+      "category": "abstention",
+      "split": "holdout",
+      "mode": "profile",
+      "unanswerable": true,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [52.59417500000001, 36.443862999999965, 34.6742949999998],
+      "retrieval": {
+        "recall5": null,
+        "recall10": null,
+        "mrr": null,
+        "ndcg10": null,
+        "duplicateRate": 0
+      },
+      "contextTokens": 189,
+      "contextHash": "16bdf06102ea046b30459f3ad04063be81f830b705b6fb127f441da0632cc4e4",
+      "staleContext": false,
+      "readerMs": 1827.8988209999989,
+      "modelUsage": {
+        "promptTokens": 1339,
+        "completionTokens": 99
+      },
+      "answer": {
+        "answer": "No allergy information has been recorded for Ren.",
+        "abstain": false,
+        "citations": ["profile", "d12"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2498.750025999998,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The response correctly states that no allergy information is recorded, rather than inventing allergies, and the context explicitly supports this."
+      }
+    },
+    {
+      "id": "q17",
+      "space": "travel",
+      "category": "knowledge-update",
+      "split": "development",
+      "mode": "profile",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [48.469948999999986, 42.77365400000008, 37.17748000000029],
+      "retrieval": {
+        "recall5": 1,
+        "recall10": 1,
+        "mrr": 1,
+        "ndcg10": 1,
+        "duplicateRate": 0
+      },
+      "contextTokens": 271,
+      "contextHash": "deedcab08873f2aed7bd3cd62713e85a86b8713d45fccca29168f960dc3a7b8e",
+      "staleContext": true,
+      "readerMs": 1458.4033829999971,
+      "modelUsage": {
+        "promptTokens": 1528,
+        "completionTokens": 86
+      },
+      "answer": {
+        "answer": "The current retreat destination is Porto, and the departure date is 2026-10-19.",
+        "abstain": false,
+        "citations": ["profile", "d14"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2351.1603009999963,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer matches the reference: Porto, departing 19 October 2026. Both facts are explicitly supported by the supplied context."
+      }
+    },
+    {
+      "id": "q18",
+      "space": "travel",
+      "category": "temporal",
+      "split": "holdout",
+      "mode": "profile",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [35.612591000000066, 39.982044999999744, 35.28355100000044],
+      "retrieval": {
+        "recall5": 0,
+        "recall10": 0,
+        "mrr": 0,
+        "ndcg10": 0,
+        "duplicateRate": 0
+      },
+      "contextTokens": 189,
+      "contextHash": "bdb8d85f69fc597b13ee3859dc81845c72feee3294d0e3fbeee007cb485016af",
+      "staleContext": false,
+      "readerMs": 2820.6387239999895,
+      "modelUsage": {
+        "promptTokens": 1368,
+        "completionTokens": 160
+      },
+      "answer": {
+        "answer": "I can’t determine the retreat plan as of 10 August 2026 from the supplied context, which only provides updates dated 24 October 2026.",
+        "abstain": true,
+        "citations": ["profile"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2944.5488030000124,
+      "judgment": {
+        "correct": false,
+        "grounded": false,
+        "explanation": "The response incorrectly abstains: the context identifies the earlier retreat plan as Bergen, departing 12 October 2026, matching the reference. Its claim that the plan cannot be determined ignores those historical details."
+      }
+    },
+    {
+      "id": "q19",
+      "space": "travel",
+      "category": "multi-session",
+      "split": "development",
+      "mode": "profile",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [39.49085600000012, 53.67402099999981, 41.26567799999975],
+      "retrieval": {
+        "recall5": 1,
+        "recall10": 1,
+        "mrr": 1,
+        "ndcg10": 1,
+        "duplicateRate": 0
+      },
+      "contextTokens": 270,
+      "contextHash": "19348288426686dc5ff67823127ba0ba3e0c79d9beca30fcac39dd413167d422",
+      "staleContext": false,
+      "readerMs": 2047.4581380000018,
+      "modelUsage": {
+        "promptTokens": 1548,
+        "completionTokens": 104
+      },
+      "answer": {
+        "answer": "Booking reference: PINE-593; hotel check-in time: 16:40; baggage allowance: 21 kilograms.",
+        "abstain": false,
+        "citations": ["profile", "d14", "d15"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2574.7352249999967,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "All three requested details match the reference and are explicitly supported by the supplied context."
+      }
+    },
+    {
+      "id": "q20",
+      "space": "release",
+      "category": "duplicates",
+      "split": "holdout",
+      "mode": "profile",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [37.10982699999977, 36.27820700000029, 37.222947000000204],
+      "retrieval": {
+        "recall5": 0.3333333333333333,
+        "recall10": 0.3333333333333333,
+        "mrr": 1,
+        "ndcg10": 0.4692787260227565,
+        "duplicateRate": 0
+      },
+      "contextTokens": 254,
+      "contextHash": "09583e728b9d0d3d2d0e32baa92a7dcd65c0eaaad09d882437d6e107443927bc",
+      "staleContext": true,
+      "readerMs": 4289.256115,
+      "modelUsage": {
+        "promptTokens": 1495,
+        "completionTokens": 69
+      },
+      "answer": {
+        "answer": "MAPLE-482",
+        "abstain": false,
+        "citations": ["profile", "d16"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 3753.7105009999977,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "MAPLE-482 matches the reference and is explicitly identified in the supplied context as the real Project Quartz release approval code."
+      }
+    },
+    {
+      "id": "q21",
+      "space": "release",
+      "category": "direct",
+      "split": "development",
+      "mode": "profile",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [33.023060000000214, 35.54673600000024, 35.47004300000026],
+      "retrieval": {
+        "recall5": 0.3333333333333333,
+        "recall10": 0.3333333333333333,
+        "mrr": 1,
+        "ndcg10": 0.4692787260227565,
+        "duplicateRate": 0
+      },
+      "contextTokens": 254,
+      "contextHash": "b4297cd2458ead020bd63461d443534a288d790e670c1b47630afe90df0ed4fd",
+      "staleContext": false,
+      "readerMs": 1438.5520819999947,
+      "modelUsage": {
+        "promptTokens": 1477,
+        "completionTokens": 64
+      },
+      "answer": {
+        "answer": "Solene coordinates the Project Quartz release.",
+        "abstain": false,
+        "citations": ["profile", "d16"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 3517.019981999998,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer correctly identifies Solene, explicitly supported by both profile and d16."
+      }
+    },
+    {
+      "id": "q22",
+      "space": "retired",
+      "category": "forgotten",
+      "split": "holdout",
+      "mode": "profile",
+      "unanswerable": true,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [36.86337299999991, 34.78166800000008, 36.090125000000626],
+      "retrieval": {
+        "recall5": null,
+        "recall10": null,
+        "mrr": null,
+        "ndcg10": null,
+        "duplicateRate": 0
+      },
+      "contextTokens": 160,
+      "contextHash": "4de070f4855ad04055e3fadac392c81c111f252cb124fc2c6e06ced708ed68b7",
+      "staleContext": false,
+      "readerMs": 3474.7971280000056,
+      "modelUsage": {
+        "promptTokens": 1271,
+        "completionTokens": 79
+      },
+      "answer": {
+        "answer": "No temporary unlock code is recorded for Project Drift.",
+        "abstain": true,
+        "citations": ["profile", "d21"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2968.1396520000126,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The response abstains from providing a code, consistent with the reference. The context explicitly states that no current unlock code is recorded for Project Drift."
+      }
+    },
+    {
+      "id": "q23",
+      "space": "personal",
+      "category": "direct",
+      "split": "development",
+      "mode": "profile",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [35.88959999999997, 36.96988399999964, 35.02339699999993],
+      "retrieval": {
+        "recall5": 1,
+        "recall10": 1,
+        "mrr": 1,
+        "ndcg10": 1,
+        "duplicateRate": 0
+      },
+      "contextTokens": 176,
+      "contextHash": "1bbff1cd192bae2594269351f648a3b36ab6e628aacc1db5fbdf5e0b8d015bcb",
+      "staleContext": false,
+      "readerMs": 1653.5251449999632,
+      "modelUsage": {
+        "promptTokens": 1319,
+        "completionTokens": 75
+      },
+      "answer": {
+        "answer": "Ren’s regular climbing lesson is every Wednesday at 18:20.",
+        "abstain": false,
+        "citations": ["profile", "d12"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2527.0064890000504,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer matches Wednesday at 18:20 and is explicitly supported by the profile and d12 context."
+      }
+    },
+    {
+      "id": "q24",
+      "space": "travel",
+      "category": "abstention",
+      "split": "holdout",
+      "mode": "profile",
+      "unanswerable": true,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [31.165661, 52.03557300000011, 32.431900999999925],
+      "retrieval": {
+        "recall5": null,
+        "recall10": null,
+        "mrr": null,
+        "ndcg10": null,
+        "duplicateRate": 0
+      },
+      "contextTokens": 222,
+      "contextHash": "90a088fc421d1f179f2a59bb2a49d277522ac2793b346ecdd16f29ee20e6e2ed",
+      "staleContext": false,
+      "readerMs": 1723.9489259999827,
+      "modelUsage": {
+        "promptTokens": 1407,
+        "completionTokens": 77
+      },
+      "answer": {
+        "answer": "I can’t determine Ren’s passport number from the supplied context.",
+        "abstain": true,
+        "citations": []
+      },
+      "invalidCitations": false,
+      "judgeMs": 3435.8232560000033,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The response appropriately abstains because the supplied context contains no passport number."
+      }
+    },
+    {
+      "id": "q01",
+      "space": "orbit",
+      "category": "knowledge-update",
+      "split": "development",
+      "mode": "memories",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [33.02055999999999, 33.21006899999975, 33.41341199999988],
+      "retrieval": {
+        "recall5": 1,
+        "recall10": 1,
+        "mrr": 1,
+        "ndcg10": 1,
+        "duplicateRate": 0
+      },
+      "contextTokens": 207,
+      "contextHash": "9f08210284f2d19a56bc25b3d8ea60e442a2af2674a8ff0ef90db05397fbbf4d",
+      "staleContext": true,
+      "readerMs": 1570.2279419999977,
+      "modelUsage": {
+        "promptTokens": 1399,
+        "completionTokens": 89
+      },
+      "answer": {
+        "answer": "Use port 7531 for the Project Orbit archive service. Port 6427 must no longer be used.",
+        "abstain": false,
+        "citations": ["d02"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 3079.2948800000013,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer correctly identifies port 7531, and the context explicitly states that it replaces port 6427, which must no longer be used."
+      }
+    },
+    {
+      "id": "q02",
+      "space": "orbit",
+      "category": "knowledge-update",
+      "split": "holdout",
+      "mode": "memories",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [26.792399999999816, 34.93872799999963, 31.00480299999981],
+      "retrieval": {
+        "recall5": 1,
+        "recall10": 1,
+        "mrr": 1,
+        "ndcg10": 1,
+        "duplicateRate": 0
+      },
+      "contextTokens": 208,
+      "contextHash": "6edcc71ff97293a9498a568517b0d1dc688a6702e79cccf5d946bb5bca6fb029",
+      "staleContext": true,
+      "readerMs": 1712.9869650000182,
+      "modelUsage": {
+        "promptTokens": 1370,
+        "completionTokens": 83
+      },
+      "answer": {
+        "answer": "Mara",
+        "abstain": false,
+        "citations": ["d02"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 4065.9893030000094,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer matches the reference, and the context explicitly identifies Mara as the current maintainer of Orbit's archive service."
+      }
+    },
+    {
+      "id": "q03",
+      "space": "orbit",
+      "category": "multi-session",
+      "split": "development",
+      "mode": "memories",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [39.215977000000294, 40.07830299999932, 36.98038600000018],
+      "retrieval": {
+        "recall5": 1,
+        "recall10": 1,
+        "mrr": 1,
+        "ndcg10": 0.9197207891481876,
+        "duplicateRate": 0
+      },
+      "contextTokens": 182,
+      "contextHash": "34983a9bdcbe2b29c3d0c64f5a38ffc251fb1be5f81ec3ea032ac09281d7722a",
+      "staleContext": false,
+      "readerMs": 3802.950124999974,
+      "modelUsage": {
+        "promptTokens": 1363,
+        "completionTokens": 81
+      },
+      "answer": {
+        "answer": "The current maintainer is Mara, and the restore verification phrase is COBALT-271.",
+        "abstain": false,
+        "citations": ["d02", "d03"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2562.577577000018,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer matches the reference: Mara and COBALT-271. Both are explicitly supported by the supplied context."
+      }
+    },
+    {
+      "id": "q04",
+      "space": "orbit",
+      "category": "temporal",
+      "split": "holdout",
+      "mode": "memories",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [35.25497100000007, 32.05666299999939, 33.2032420000005],
+      "retrieval": {
+        "recall5": 0,
+        "recall10": 0,
+        "mrr": 0,
+        "ndcg10": 0,
+        "duplicateRate": 0
+      },
+      "contextTokens": 0,
+      "contextHash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+      "staleContext": false,
+      "readerMs": 1118.345667000016,
+      "modelUsage": {
+        "promptTokens": 931,
+        "completionTokens": 67
+      },
+      "answer": {
+        "answer": "",
+        "abstain": true,
+        "citations": []
+      },
+      "invalidCitations": false,
+      "judgeMs": 2912.7515980000026,
+      "judgment": {
+        "correct": false,
+        "grounded": true,
+        "explanation": "The response abstained, but the question is answerable and the required archive port is 6427. It made no substantive claims unsupported by the empty context."
+      }
+    },
+    {
+      "id": "q05",
+      "space": "orbit",
+      "category": "direct",
+      "split": "development",
+      "mode": "memories",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [32.60557599999993, 43.32199300000002, 31.398428000000422],
+      "retrieval": {
+        "recall5": 1,
+        "recall10": 1,
+        "mrr": 1,
+        "ndcg10": 1,
+        "duplicateRate": 0
+      },
+      "contextTokens": 203,
+      "contextHash": "e345b46f0827a3b61c130d2e6338f20233739230ae9b73d7ddc8bef23de775af",
+      "staleContext": false,
+      "readerMs": 1565.3348769999866,
+      "modelUsage": {
+        "promptTokens": 1395,
+        "completionTokens": 81
+      },
+      "answer": {
+        "answer": "Orbit database backups run every Tuesday at 02:35 UTC and each completed backup is retained for 29 days.",
+        "abstain": false,
+        "citations": ["d03"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2546.335383999991,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer matches the reference schedule and retention period, and both claims are explicitly supported by d03."
+      }
+    },
+    {
+      "id": "q06",
+      "space": "orbit",
+      "category": "negation",
+      "split": "holdout",
+      "mode": "memories",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [31.647287999999662, 30.36613800000032, 32.017863000000034],
+      "retrieval": {
+        "recall5": 1,
+        "recall10": 1,
+        "mrr": 1,
+        "ndcg10": 1,
+        "duplicateRate": 0
+      },
+      "contextTokens": 170,
+      "contextHash": "535c7b5fcf4e9e6948842553603b0d235f46f2e6e2dfdd8bcb5664bb4fe95e7d",
+      "staleContext": false,
+      "readerMs": 3645.090072999985,
+      "modelUsage": {
+        "promptTokens": 1319,
+        "completionTokens": 76
+      },
+      "answer": {
+        "answer": "No. Project Orbit's deployment policy prohibits releases on Fridays, including routine changes.",
+        "abstain": false,
+        "citations": ["d04"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2277.2880650000006,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer correctly states that Friday deployments, including routine changes, are prohibited, and the context explicitly supports this."
+      }
+    },
+    {
+      "id": "q07",
+      "space": "orbit",
+      "category": "identifier",
+      "split": "development",
+      "mode": "memories",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [37.873793000000006, 40.62424899999996, 33.494566000000304],
+      "retrieval": {
+        "recall5": 1,
+        "recall10": 1,
+        "mrr": 1,
+        "ndcg10": 1,
+        "duplicateRate": 0
+      },
+      "contextTokens": 180,
+      "contextHash": "8aa3c4a23469e5c137e56954943599020ed4370f4968aca5959df4042ab45440",
+      "staleContext": false,
+      "readerMs": 1800.433052999986,
+      "modelUsage": {
+        "promptTokens": 1333,
+        "completionTokens": 97
+      },
+      "answer": {
+        "answer": "CacheTTL: 83 seconds",
+        "abstain": false,
+        "citations": ["d05"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2892.727932000009,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer gives the exact case-sensitive production key CacheTTL and its supported value of 83 seconds."
+      }
+    },
+    {
+      "id": "q08",
+      "space": "orbit",
+      "category": "multi-session",
+      "split": "holdout",
+      "mode": "memories",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [31.480302000000165, 31.73521299999993, 37.8997930000005],
+      "retrieval": {
+        "recall5": 1,
+        "recall10": 1,
+        "mrr": 1,
+        "ndcg10": 1,
+        "duplicateRate": 0
+      },
+      "contextTokens": 94,
+      "contextHash": "02aacfc7ca2660f009cf64f7b7fb1039638a665dbec101feb7d994097987097a",
+      "staleContext": false,
+      "readerMs": 1985.553860999993,
+      "modelUsage": {
+        "promptTokens": 1165,
+        "completionTokens": 102
+      },
+      "answer": {
+        "answer": "Mara should use the rollback release label AMBER-72. The release must include a signed artifact.",
+        "abstain": false,
+        "citations": ["d05", "d04"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2979.5913010000077,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer correctly gives AMBER-72 and requires a signed artifact, both explicitly supported by the context."
+      }
+    },
+    {
+      "id": "q09",
+      "space": "beacon",
+      "category": "scope",
+      "split": "development",
+      "mode": "memories",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [37.50249000000008, 37.144307000000026, 35.37786600000072],
+      "retrieval": {
+        "recall5": 1,
+        "recall10": 1,
+        "mrr": 1,
+        "ndcg10": 1,
+        "duplicateRate": 0
+      },
+      "contextTokens": 144,
+      "contextHash": "8ecec586fdb9fefb87b022874c5cdc11e5b52f3b0eab5deef3b12f19d5248bb8",
+      "staleContext": false,
+      "readerMs": 1408.9806190000018,
+      "modelUsage": {
+        "promptTokens": 1275,
+        "completionTokens": 78
+      },
+      "answer": {
+        "answer": "Beacon's archive service listens on port 8663, and Niko maintains it.",
+        "abstain": false,
+        "citations": ["d07"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2892.3784650000016,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer correctly identifies port 8663 and Niko as the maintainer, both explicitly supported by the context."
+      }
+    },
+    {
+      "id": "q10",
+      "space": "beacon",
+      "category": "scope",
+      "split": "holdout",
+      "mode": "memories",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [30.957842000000028, 29.4462280000007, 36.242152999999234],
+      "retrieval": {
+        "recall5": 1,
+        "recall10": 1,
+        "mrr": 1,
+        "ndcg10": 1,
+        "duplicateRate": 0
+      },
+      "contextTokens": 144,
+      "contextHash": "b169724f52732fdd05a02404f48b7869f2c1faea4020cd87e05a1a91ae643405",
+      "staleContext": false,
+      "readerMs": 1835.7384129999846,
+      "modelUsage": {
+        "promptTokens": 1274,
+        "completionTokens": 82
+      },
+      "answer": {
+        "answer": "The Beacon recovery label is INDIGO-638, and backups are retained for 17 days.",
+        "abstain": false,
+        "citations": ["d08"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 4032.324783000018,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer matches the reference, and the context explicitly supports both INDIGO-638 and the 17-day backup retention period."
+      }
+    },
+    {
+      "id": "q11",
+      "space": "beacon",
+      "category": "negation",
+      "split": "development",
+      "mode": "memories",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [30.07640800000013, 32.2567210000002, 33.33755900000051],
+      "retrieval": {
+        "recall5": 1,
+        "recall10": 1,
+        "mrr": 1,
+        "ndcg10": 1,
+        "duplicateRate": 0
+      },
+      "contextTokens": 131,
+      "contextHash": "75ac85712cd817caa31d0202c10b7098057d969363577b5867c22b74b63ee1b8",
+      "staleContext": false,
+      "readerMs": 1590.213990999997,
+      "modelUsage": {
+        "promptTokens": 1237,
+        "completionTokens": 80
+      },
+      "answer": {
+        "answer": "No. The enableArchiveV2 feature switch in Project Beacon is currently false.",
+        "abstain": false,
+        "citations": ["d09"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 8572.860217000009,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer matches the reference and is directly supported by the context stating that Project Beacon's enableArchiveV2 switch is currently false."
+      }
+    },
+    {
+      "id": "q12",
+      "space": "orbit",
+      "category": "abstention",
+      "split": "holdout",
+      "mode": "memories",
+      "unanswerable": true,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [35.81670699999995, 39.830863000000136, 33.391544999999496],
+      "retrieval": {
+        "recall5": null,
+        "recall10": null,
+        "mrr": null,
+        "ndcg10": null,
+        "duplicateRate": 0
+      },
+      "contextTokens": 148,
+      "contextHash": "57105d7297cda7f105c19c51137e9ee021529e034725d2686df0095172fc231b",
+      "staleContext": false,
+      "readerMs": 1274.6535000000003,
+      "modelUsage": {
+        "promptTokens": 1250,
+        "completionTokens": 56
+      },
+      "answer": {
+        "answer": "",
+        "abstain": true,
+        "citations": []
+      },
+      "invalidCitations": false,
+      "judgeMs": 5585.982977,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The response appropriately abstains because the context contains only Project Orbit information and no Project Beacon namespace verification phrase."
+      }
+    },
+    {
+      "id": "q13",
+      "space": "personal",
+      "category": "preference",
+      "split": "development",
+      "mode": "memories",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [28.991847000000007, 29.961695999999847, 31.705603999999767],
+      "retrieval": {
+        "recall5": 1,
+        "recall10": 1,
+        "mrr": 1,
+        "ndcg10": 1,
+        "duplicateRate": 0
+      },
+      "contextTokens": 35,
+      "contextHash": "67d893c6cfad6f4ea02e0e69a6a9d9ab57e6aad5fde2d1901dfcd5828024d919",
+      "staleContext": true,
+      "readerMs": 3453.4150320000044,
+      "modelUsage": {
+        "promptTokens": 1010,
+        "completionTokens": 65
+      },
+      "answer": {
+        "answer": "Status updates should be delivered to Ren in chat.",
+        "abstain": false,
+        "citations": ["d11"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2472.8788570000033,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer correctly identifies chat as the current delivery channel, supported explicitly by the context."
+      }
+    },
+    {
+      "id": "q14",
+      "space": "personal",
+      "category": "knowledge-update",
+      "split": "holdout",
+      "mode": "memories",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [26.544538999999986, 25.092593000000306, 26.131994999999733],
+      "retrieval": {
+        "recall5": 1,
+        "recall10": 1,
+        "mrr": 1,
+        "ndcg10": 1,
+        "duplicateRate": 0
+      },
+      "contextTokens": 49,
+      "contextHash": "6be30ff7381cc9e00563f15ce58030a97f15550fa2ff4c10f66f904677b9a54f",
+      "staleContext": true,
+      "readerMs": 1497.4721489999938,
+      "modelUsage": {
+        "promptTokens": 1034,
+        "completionTokens": 67
+      },
+      "answer": {
+        "answer": "Ren currently prefers dark mode for the dashboard.",
+        "abstain": false,
+        "citations": ["d11"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2647.210772999999,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer matches the reference and is directly supported by the context stating that Ren now prefers dark mode."
+      }
+    },
+    {
+      "id": "q15",
+      "space": "personal",
+      "category": "preference",
+      "split": "development",
+      "mode": "memories",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [26.696288000000095, 27.37282899999991, 30.31856400000015],
+      "retrieval": {
+        "recall5": 1,
+        "recall10": 1,
+        "mrr": 1,
+        "ndcg10": 1,
+        "duplicateRate": 0
+      },
+      "contextTokens": 14,
+      "contextHash": "636f27ece52f8e22bb677033391b737298439e9531cd681c1a21adaf2ccdf2c6",
+      "staleContext": false,
+      "readerMs": 1613.3239649999887,
+      "modelUsage": {
+        "promptTokens": 964,
+        "completionTokens": 65
+      },
+      "answer": {
+        "answer": "Procedural instructions for Ren should be formatted as concise numbered steps.",
+        "abstain": false,
+        "citations": ["d11"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2002.3080539999646,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer matches the reference and is directly supported by context d11."
+      }
+    },
+    {
+      "id": "q16",
+      "space": "personal",
+      "category": "abstention",
+      "split": "holdout",
+      "mode": "memories",
+      "unanswerable": true,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [25.507920000000013, 27.23118599999998, 29.607154999999693],
+      "retrieval": {
+        "recall5": null,
+        "recall10": null,
+        "mrr": null,
+        "ndcg10": null,
+        "duplicateRate": 0
+      },
+      "contextTokens": 44,
+      "contextHash": "da00bb58252a4a1fda464422aaca3503d8a3c8469666f5fed68b4a5edaba7de4",
+      "staleContext": false,
+      "readerMs": 1499.8587830000033,
+      "modelUsage": {
+        "promptTokens": 1023,
+        "completionTokens": 68
+      },
+      "answer": {
+        "answer": "No allergy information has been recorded for Ren.",
+        "abstain": false,
+        "citations": ["d12"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2668.4565440000006,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The response correctly states that Ren's allergy information is not recorded, which is explicitly supported by the context."
+      }
+    },
+    {
+      "id": "q17",
+      "space": "travel",
+      "category": "knowledge-update",
+      "split": "development",
+      "mode": "memories",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [27.910609000000022, 26.994228999999905, 29.692378000000645],
+      "retrieval": {
+        "recall5": 1,
+        "recall10": 1,
+        "mrr": 1,
+        "ndcg10": 1,
+        "duplicateRate": 0
+      },
+      "contextTokens": 82,
+      "contextHash": "1eed75c0e27c2535e60614e6a925e4b0da3e40d09a5ace615c9adad1c7da5edd",
+      "staleContext": true,
+      "readerMs": 1557.545861999999,
+      "modelUsage": {
+        "promptTokens": 1124,
+        "completionTokens": 84
+      },
+      "answer": {
+        "answer": "The current retreat destination is Porto, and the departure date is 2026-10-19.",
+        "abstain": false,
+        "citations": ["d14"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2911.887880000002,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer matches the reference, and the context explicitly confirms Porto and the updated departure date of 2026-10-19."
+      }
+    },
+    {
+      "id": "q18",
+      "space": "travel",
+      "category": "temporal",
+      "split": "holdout",
+      "mode": "memories",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [31.309934, 29.690631000000394, 29.726182999999764],
+      "retrieval": {
+        "recall5": 0,
+        "recall10": 0,
+        "mrr": 0,
+        "ndcg10": 0,
+        "duplicateRate": 0
+      },
+      "contextTokens": 0,
+      "contextHash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+      "staleContext": false,
+      "readerMs": 2170.3631969999988,
+      "modelUsage": {
+        "promptTokens": 958,
+        "completionTokens": 109
+      },
+      "answer": {
+        "answer": "I cannot determine the retreat plan as of 10 August 2026 because no supporting context was provided.",
+        "abstain": true,
+        "citations": []
+      },
+      "invalidCitations": false,
+      "judgeMs": 2317.6633010000223,
+      "judgment": {
+        "correct": false,
+        "grounded": true,
+        "explanation": "The response abstains instead of giving the reference plan: Bergen, departing 12 October 2026. Its claim that no supporting context was provided is supported by the empty context."
+      }
+    },
+    {
+      "id": "q19",
+      "space": "travel",
+      "category": "multi-session",
+      "split": "development",
+      "mode": "memories",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [34.015104000000065, 33.188098999999966, 34.58113599999979],
+      "retrieval": {
+        "recall5": 1,
+        "recall10": 1,
+        "mrr": 1,
+        "ndcg10": 1,
+        "duplicateRate": 0
+      },
+      "contextTokens": 81,
+      "contextHash": "261ed3736a918fe3031514ee168985d4f2fa8c690a44558293c6bd3b0554f20a",
+      "staleContext": false,
+      "readerMs": 2549.715029999992,
+      "modelUsage": {
+        "promptTokens": 1144,
+        "completionTokens": 120
+      },
+      "answer": {
+        "answer": "Booking reference: PINE-593; hotel check-in time: 16:40; baggage allowance: 21 kilograms.",
+        "abstain": false,
+        "citations": ["d14", "d15"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 3357.162755000012,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "All three requested details match the reference and are explicitly supported by the supplied context."
+      }
+    },
+    {
+      "id": "q20",
+      "space": "release",
+      "category": "duplicates",
+      "split": "holdout",
+      "mode": "memories",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [30.38862400000005, 37.98016499999994, 30.504390000000058],
+      "retrieval": {
+        "recall5": 0.3333333333333333,
+        "recall10": 0.3333333333333333,
+        "mrr": 1,
+        "ndcg10": 0.4692787260227565,
+        "duplicateRate": 0
+      },
+      "contextTokens": 103,
+      "contextHash": "5f9148a9a581c5ef45fe884431f7efed900812d4e473495c306ec51698c0e846",
+      "staleContext": true,
+      "readerMs": 1410.9959209999943,
+      "modelUsage": {
+        "promptTokens": 1169,
+        "completionTokens": 69
+      },
+      "answer": {
+        "answer": "MAPLE-482",
+        "abstain": false,
+        "citations": ["d16"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2623.635998999991,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer gives the real release approval code, MAPLE-482, which is explicitly supported by the context and matches the reference."
+      }
+    },
+    {
+      "id": "q21",
+      "space": "release",
+      "category": "direct",
+      "split": "development",
+      "mode": "memories",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [28.499648999999977, 24.73108500000035, 28.343918999999914],
+      "retrieval": {
+        "recall5": 0.3333333333333333,
+        "recall10": 0.3333333333333333,
+        "mrr": 1,
+        "ndcg10": 0.4692787260227565,
+        "duplicateRate": 0
+      },
+      "contextTokens": 103,
+      "contextHash": "b383dc4ad6429369dcdd7ee96760d08e1c9ca104a662790ee3ef0a9ec5147b6c",
+      "staleContext": false,
+      "readerMs": 1698.45393399999,
+      "modelUsage": {
+        "promptTokens": 1151,
+        "completionTokens": 66
+      },
+      "answer": {
+        "answer": "Solene coordinates the Project Quartz release.",
+        "abstain": false,
+        "citations": ["d16"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2494.2893140000087,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer matches the reference, and the context explicitly identifies Solene as the Project Quartz release coordinator."
+      }
+    },
+    {
+      "id": "q22",
+      "space": "retired",
+      "category": "forgotten",
+      "split": "holdout",
+      "mode": "memories",
+      "unanswerable": true,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [29.023676000000023, 27.739472999999634, 26.765172000000348],
+      "retrieval": {
+        "recall5": null,
+        "recall10": null,
+        "mrr": null,
+        "ndcg10": null,
+        "duplicateRate": 0
+      },
+      "contextTokens": 64,
+      "contextHash": "8d34e0d769d5025e6e0f0498de518ed7632f0183aa62eb01d6cd6329220019b5",
+      "staleContext": false,
+      "readerMs": 1694.287306000013,
+      "modelUsage": {
+        "promptTokens": 1079,
+        "completionTokens": 83
+      },
+      "answer": {
+        "answer": "I can’t provide a temporary Project Drift unlock code because no current unlock code is recorded.",
+        "abstain": true,
+        "citations": ["d21"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2593.705880000023,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The response appropriately abstains from providing an unavailable code, and the context explicitly states that no current unlock code is recorded for Project Drift."
+      }
+    },
+    {
+      "id": "q23",
+      "space": "personal",
+      "category": "direct",
+      "split": "development",
+      "mode": "memories",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [28.527317999999923, 35.91728200000034, 28.590390999999727],
+      "retrieval": {
+        "recall5": 1,
+        "recall10": 1,
+        "mrr": 1,
+        "ndcg10": 1,
+        "duplicateRate": 0
+      },
+      "contextTokens": 31,
+      "contextHash": "2036638a101efdef54f0341d3af87046bbf9ec2418c1d56f474f491b978434ff",
+      "staleContext": false,
+      "readerMs": 1338.6445990000502,
+      "modelUsage": {
+        "promptTokens": 1003,
+        "completionTokens": 71
+      },
+      "answer": {
+        "answer": "Ren’s regular climbing lesson is every Wednesday at 18:20.",
+        "abstain": false,
+        "citations": ["d12"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2454.415471000015,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer matches the reference, and d12 explicitly supports every Wednesday at 18:20."
+      }
+    },
+    {
+      "id": "q24",
+      "space": "travel",
+      "category": "abstention",
+      "split": "holdout",
+      "mode": "memories",
+      "unanswerable": true,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [26.244380000000092, 28.164668999999776, 30.576081999999587],
+      "retrieval": {
+        "recall5": null,
+        "recall10": null,
+        "mrr": null,
+        "ndcg10": null,
+        "duplicateRate": 0
+      },
+      "contextTokens": 33,
+      "contextHash": "86837af561d5fd8e7269f0b394124cc5d08b310ff95344c4feb2b95d59edb131",
+      "staleContext": false,
+      "readerMs": 1666.0508329999866,
+      "modelUsage": {
+        "promptTokens": 1007,
+        "completionTokens": 67
+      },
+      "answer": {
+        "answer": "I don’t have enough information to determine Ren’s passport number.",
+        "abstain": true,
+        "citations": ["d15"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 3478.6776200000313,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The response appropriately abstains because the supplied context contains no passport number for Ren."
+      }
+    },
+    {
+      "id": "q01",
+      "space": "orbit",
+      "category": "knowledge-update",
+      "split": "development",
+      "mode": "hybrid",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [32.808948999999984, 34.83751400000028, 35.8233110000001],
+      "retrieval": {
+        "recall5": 1,
+        "recall10": 1,
+        "mrr": 1,
+        "ndcg10": 1,
+        "duplicateRate": 0
+      },
+      "contextTokens": 277,
+      "contextHash": "2b2cbdf956f9caf3172c4919d6d129f5ee184517daa358bf99896a97049d1ec7",
+      "staleContext": true,
+      "readerMs": 2124.453188000014,
+      "modelUsage": {
+        "promptTokens": 1545,
+        "completionTokens": 121
+      },
+      "answer": {
+        "answer": "Use port 7531 for the Project Orbit archive service. Port 6427 has been replaced and must no longer be used.",
+        "abstain": false,
+        "citations": ["d02"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 4755.1772050000145,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer gives port 7531 as required, and the context explicitly confirms that it replaces port 6427, which must no longer be used."
+      }
+    },
+    {
+      "id": "q02",
+      "space": "orbit",
+      "category": "knowledge-update",
+      "split": "holdout",
+      "mode": "hybrid",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [28.090373999999997, 38.85622199999989, 29.71807499999977],
+      "retrieval": {
+        "recall5": 1,
+        "recall10": 1,
+        "mrr": 1,
+        "ndcg10": 1,
+        "duplicateRate": 0
+      },
+      "contextTokens": 262,
+      "contextHash": "55100bf8833ccbe338ad5c191ec3b07a834f1756d6947db3d50de89326c104ff",
+      "staleContext": true,
+      "readerMs": 1929.9685580000078,
+      "modelUsage": {
+        "promptTokens": 1486,
+        "completionTokens": 97
+      },
+      "answer": {
+        "answer": "Mara currently maintains the Orbit archive service.",
+        "abstain": false,
+        "citations": ["d02"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 3368.1254759999865,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer matches the reference, and the context explicitly names Mara as the current maintainer following the September 20, 2026 handover from Iris."
+      }
+    },
+    {
+      "id": "q03",
+      "space": "orbit",
+      "category": "multi-session",
+      "split": "development",
+      "mode": "hybrid",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [40.64569899999992, 43.223596000000725, 46.217177999999876],
+      "retrieval": {
+        "recall5": 1,
+        "recall10": 1,
+        "mrr": 1,
+        "ndcg10": 0.9197207891481876,
+        "duplicateRate": 0
+      },
+      "contextTokens": 214,
+      "contextHash": "89672522a1e90f49adcbea7507031c880ba5f2e4dba4976b202fe6b50791109b",
+      "staleContext": false,
+      "readerMs": 2183.9095620000007,
+      "modelUsage": {
+        "promptTokens": 1426,
+        "completionTokens": 124
+      },
+      "answer": {
+        "answer": "Orbit's current maintainer is Mara, and the restore verification phrase is COBALT-271.",
+        "abstain": false,
+        "citations": ["d02", "d03"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 3055.247365000003,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer matches the reference, and the context supports Mara as the current maintainer and COBALT-271 as the restore verification phrase."
+      }
+    },
+    {
+      "id": "q04",
+      "space": "orbit",
+      "category": "temporal",
+      "split": "holdout",
+      "mode": "hybrid",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [35.30896999999959, 34.2612680000002, 34.207288999999946],
+      "retrieval": {
+        "recall5": 1,
+        "recall10": 1,
+        "mrr": 1,
+        "ndcg10": 1,
+        "duplicateRate": 0
+      },
+      "contextTokens": 36,
+      "contextHash": "d74335e552add01f32bbdf7ef39541b8b0bfcd675ce5a54b63c004657393223d",
+      "staleContext": false,
+      "readerMs": 1786.8079719999805,
+      "modelUsage": {
+        "promptTokens": 1021,
+        "completionTokens": 75
+      },
+      "answer": {
+        "answer": "Project Orbit used archive port 6427 on 1 August 2026.",
+        "abstain": false,
+        "citations": ["d01"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2553.154110000003,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer matches the reference port 6427 and is supported by the supplied Project Orbit archive-service context."
+      }
+    },
+    {
+      "id": "q05",
+      "space": "orbit",
+      "category": "direct",
+      "split": "development",
+      "mode": "hybrid",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [35.34165299999995, 35.84643099999994, 37.216269000000466],
+      "retrieval": {
+        "recall5": 1,
+        "recall10": 1,
+        "mrr": 1,
+        "ndcg10": 1,
+        "duplicateRate": 0
+      },
+      "contextTokens": 211,
+      "contextHash": "e8b771dc57614af5a71e9038f0a3b7b3978950a8fa6c7968b4631e5be6dbdf2e",
+      "staleContext": false,
+      "readerMs": 1421.9182010000222,
+      "modelUsage": {
+        "promptTokens": 1406,
+        "completionTokens": 82
+      },
+      "answer": {
+        "answer": "Orbit database backups run every Tuesday at 02:35 UTC and are retained for 29 days.",
+        "abstain": false,
+        "citations": ["d03"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2733.6135919999797,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer matches the reference, and the context explicitly supports Tuesday at 02:35 UTC with 29-day retention."
+      }
+    },
+    {
+      "id": "q06",
+      "space": "orbit",
+      "category": "negation",
+      "split": "holdout",
+      "mode": "hybrid",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [31.54455999999982, 32.70259199999964, 32.02252599999974],
+      "retrieval": {
+        "recall5": 1,
+        "recall10": 1,
+        "mrr": 1,
+        "ndcg10": 1,
+        "duplicateRate": 0
+      },
+      "contextTokens": 187,
+      "contextHash": "8a93d5225f1134737feddc531a26979c09955f74135639f8acb81b6cde81b157",
+      "staleContext": false,
+      "readerMs": 2301.465785999986,
+      "modelUsage": {
+        "promptTokens": 1367,
+        "completionTokens": 128
+      },
+      "answer": {
+        "answer": "No. Project Orbit prohibits deployments on Fridays, including routine changes. Releases are permitted only on Tuesdays and Thursdays, and every release requires a signed artifact.",
+        "abstain": false,
+        "citations": ["d04"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 8034.604251000012,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer correctly states that Friday deployments are prohibited even for routine changes. The context also supports the additional Tuesday/Thursday-only release schedule and signed-artifact requirement."
+      }
+    },
+    {
+      "id": "q07",
+      "space": "orbit",
+      "category": "identifier",
+      "split": "development",
+      "mode": "hybrid",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [34.06644700000004, 33.742105999999694, 37.79936400000042],
+      "retrieval": {
+        "recall5": 1,
+        "recall10": 1,
+        "mrr": 1,
+        "ndcg10": 1,
+        "duplicateRate": 0
+      },
+      "contextTokens": 235,
+      "contextHash": "2f5116474b8e0f3427a72605abb0460451867d5921a5cf9fd5b0f66e417cd621",
+      "staleContext": false,
+      "readerMs": 1920.4786620000086,
+      "modelUsage": {
+        "promptTokens": 1441,
+        "completionTokens": 102
+      },
+      "answer": {
+        "answer": "CacheTTL = 83 seconds",
+        "abstain": false,
+        "citations": ["d05"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 1969.580621000001,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer gives the exact production key, CacheTTL, and its value of 83 seconds, both explicitly supported by the context."
+      }
+    },
+    {
+      "id": "q08",
+      "space": "orbit",
+      "category": "multi-session",
+      "split": "holdout",
+      "mode": "hybrid",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [39.24039300000004, 33.83346099999926, 34.47761999999966],
+      "retrieval": {
+        "recall5": 1,
+        "recall10": 1,
+        "mrr": 1,
+        "ndcg10": 1,
+        "duplicateRate": 0
+      },
+      "contextTokens": 306,
+      "contextHash": "164fbc1e9ec80a240fb9db1adc465d9917fbbab0e7b0861c9ede08ee3fe2b746",
+      "staleContext": false,
+      "readerMs": 3349.8080199999968,
+      "modelUsage": {
+        "promptTokens": 1603,
+        "completionTokens": 102
+      },
+      "answer": {
+        "answer": "Mara should use rollback label AMBER-72. The release must include a signed artifact.",
+        "abstain": false,
+        "citations": ["d05", "d04"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 4483.509499000007,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer gives AMBER-72 and requires a signed artifact, matching the reference and explicitly supported by the context."
+      }
+    },
+    {
+      "id": "q09",
+      "space": "beacon",
+      "category": "scope",
+      "split": "development",
+      "mode": "hybrid",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [36.98600399999998, 34.72624199999973, 35.5690969999996],
+      "retrieval": {
+        "recall5": 1,
+        "recall10": 1,
+        "mrr": 1,
+        "ndcg10": 1,
+        "duplicateRate": 0
+      },
+      "contextTokens": 173,
+      "contextHash": "e56a84d13c4c2d570c084d1f999240f0950485a5c98f6d8ef6d907c1c5adf271",
+      "staleContext": false,
+      "readerMs": 1658.1967650000006,
+      "modelUsage": {
+        "promptTokens": 1332,
+        "completionTokens": 77
+      },
+      "answer": {
+        "answer": "Beacon's archive listens on port 8663 and is maintained by Niko.",
+        "abstain": false,
+        "citations": ["d07"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 3023.9699430000037,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer correctly identifies port 8663 and Niko as the maintainer, both explicitly supported by the context."
+      }
+    },
+    {
+      "id": "q10",
+      "space": "beacon",
+      "category": "scope",
+      "split": "holdout",
+      "mode": "hybrid",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [33.10869200000002, 32.3697489999995, 35.11700900000051],
+      "retrieval": {
+        "recall5": 1,
+        "recall10": 1,
+        "mrr": 1,
+        "ndcg10": 1,
+        "duplicateRate": 0
+      },
+      "contextTokens": 166,
+      "contextHash": "9e649913a02adadfe464cc2d1230c8f5f378c916ac0e3c420a105c1f85a4de22",
+      "staleContext": false,
+      "readerMs": 2094.6699420000077,
+      "modelUsage": {
+        "promptTokens": 1319,
+        "completionTokens": 86
+      },
+      "answer": {
+        "answer": "The Beacon recovery label is INDIGO-638, and the backup retention period is 17 days.",
+        "abstain": false,
+        "citations": ["d08"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2393.1048909999954,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer matches the reference, and the context explicitly supports both the recovery label INDIGO-638 and the 17-day backup retention period."
+      }
+    },
+    {
+      "id": "q11",
+      "space": "beacon",
+      "category": "negation",
+      "split": "development",
+      "mode": "hybrid",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [31.353792999999996, 33.88258399999995, 32.54782100000011],
+      "retrieval": {
+        "recall5": 1,
+        "recall10": 1,
+        "mrr": 1,
+        "ndcg10": 1,
+        "duplicateRate": 0
+      },
+      "contextTokens": 168,
+      "contextHash": "8c26e6bf575edffe13a24597dc91eae40efb9f89b96ede04e10aac708af49441",
+      "staleContext": false,
+      "readerMs": 1466.1651229999843,
+      "modelUsage": {
+        "promptTokens": 1311,
+        "completionTokens": 75
+      },
+      "answer": {
+        "answer": "No. enableArchiveV2 is currently false in Beacon.",
+        "abstain": false,
+        "citations": ["d09"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 4865.106209999998,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer matches the reference and is directly supported by the context stating that Beacon's enableArchiveV2 switch is currently false."
+      }
+    },
+    {
+      "id": "q12",
+      "space": "orbit",
+      "category": "abstention",
+      "split": "holdout",
+      "mode": "hybrid",
+      "unanswerable": true,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [33.25528799999984, 38.97748599999977, 32.98625799999991],
+      "retrieval": {
+        "recall5": null,
+        "recall10": null,
+        "mrr": null,
+        "ndcg10": null,
+        "duplicateRate": 0
+      },
+      "contextTokens": 184,
+      "contextHash": "08e9563b941ebf6dd26cda86ae832f9e89a8602eac302c40c187797434056bf6",
+      "staleContext": false,
+      "readerMs": 1813.9443019999962,
+      "modelUsage": {
+        "promptTokens": 1340,
+        "completionTokens": 94
+      },
+      "answer": {
+        "answer": "The supplied context does not provide Project Beacon’s private namespace verification phrase.",
+        "abstain": true,
+        "citations": []
+      },
+      "invalidCitations": false,
+      "judgeMs": 2548.746278999999,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The response correctly abstains: the supplied context contains only Project Orbit information and does not provide Project Beacon’s private namespace verification phrase."
+      }
+    },
+    {
+      "id": "q13",
+      "space": "personal",
+      "category": "preference",
+      "split": "development",
+      "mode": "hybrid",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [29.294848, 30.960572999999386, 31.46113200000036],
+      "retrieval": {
+        "recall5": 1,
+        "recall10": 1,
+        "mrr": 1,
+        "ndcg10": 1,
+        "duplicateRate": 0
+      },
+      "contextTokens": 109,
+      "contextHash": "72e044ea1488e56ed6895af8e526f3c2ee0f5b81f33496456541b7ff935c839e",
+      "staleContext": true,
+      "readerMs": 2359.9339850000106,
+      "modelUsage": {
+        "promptTokens": 1166,
+        "completionTokens": 91
+      },
+      "answer": {
+        "answer": "Deliver status updates to Ren in chat, not by email.",
+        "abstain": false,
+        "citations": ["d11"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 3033.5025820000446,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer matches the reference and is directly supported by the current preference in d11: chat, not email."
+      }
+    },
+    {
+      "id": "q14",
+      "space": "personal",
+      "category": "knowledge-update",
+      "split": "holdout",
+      "mode": "hybrid",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [29.948826000000054, 30.738632000000507, 33.54635199999939],
+      "retrieval": {
+        "recall5": 1,
+        "recall10": 1,
+        "mrr": 1,
+        "ndcg10": 1,
+        "duplicateRate": 0
+      },
+      "contextTokens": 123,
+      "contextHash": "24a4787d19521943234962e5cd4c8ba9b2c448a92b6b0b8748b003d61d294fb0",
+      "staleContext": true,
+      "readerMs": 4694.8317950000055,
+      "modelUsage": {
+        "promptTokens": 1188,
+        "completionTokens": 72
+      },
+      "answer": {
+        "answer": "Ren currently prefers dark mode for the dashboard.",
+        "abstain": false,
+        "citations": ["d11"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 14203.673393999983,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer matches the reference and is directly supported by context stating that Ren now prefers dark mode over their previous light-mode preference."
+      }
+    },
+    {
+      "id": "q15",
+      "space": "personal",
+      "category": "preference",
+      "split": "development",
+      "mode": "hybrid",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [28.495680999999877, 31.318706999999904, 31.421118999999635],
+      "retrieval": {
+        "recall5": 1,
+        "recall10": 1,
+        "mrr": 1,
+        "ndcg10": 1,
+        "duplicateRate": 0
+      },
+      "contextTokens": 88,
+      "contextHash": "a28a8f39850c740afac08eaf3801d207e947b754059c48b9b9a29dea36cd3c74",
+      "staleContext": false,
+      "readerMs": 1706.8692769999907,
+      "modelUsage": {
+        "promptTokens": 1110,
+        "completionTokens": 92
+      },
+      "answer": {
+        "answer": "Use concise numbered steps.",
+        "abstain": false,
+        "citations": ["d11"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2594.015090000001,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer matches the reference and is directly supported by the context stating that Ren prefers concise numbered steps for procedures."
+      }
+    },
+    {
+      "id": "q16",
+      "space": "personal",
+      "category": "abstention",
+      "split": "holdout",
+      "mode": "hybrid",
+      "unanswerable": true,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [27.367588999999953, 30.265228000000207, 31.402106000000458],
+      "retrieval": {
+        "recall5": null,
+        "recall10": null,
+        "mrr": null,
+        "ndcg10": null,
+        "duplicateRate": 0
+      },
+      "contextTokens": 110,
+      "contextHash": "be44bb269440c2e32cbf885b66ed73d2f8a343ba69101b1fbee664c1ee944646",
+      "staleContext": false,
+      "readerMs": 1741.8372600000002,
+      "modelUsage": {
+        "promptTokens": 1161,
+        "completionTokens": 73
+      },
+      "answer": {
+        "answer": "No allergy information has been recorded for Ren.",
+        "abstain": false,
+        "citations": ["d12"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2974.8011850000184,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The response correctly states that no allergy information is recorded for Ren, without inventing any allergies, and the context explicitly supports this."
+      }
+    },
+    {
+      "id": "q17",
+      "space": "travel",
+      "category": "knowledge-update",
+      "split": "development",
+      "mode": "hybrid",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [31.265062999999827, 29.788338999999723, 33.14763099999982],
+      "retrieval": {
+        "recall5": 1,
+        "recall10": 1,
+        "mrr": 1,
+        "ndcg10": 1,
+        "duplicateRate": 0
+      },
+      "contextTokens": 201,
+      "contextHash": "c11ceeafe129e6f2af6104c2add164a4e4435cc256e501896acecd0cef8f3dbd",
+      "staleContext": true,
+      "readerMs": 2526.696624999997,
+      "modelUsage": {
+        "promptTokens": 1372,
+        "completionTokens": 115
+      },
+      "answer": {
+        "answer": "The current retreat destination is Porto, and the departure date is 2026-10-19.",
+        "abstain": false,
+        "citations": ["d14"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2406.5902889999998,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer gives Porto and 19 October 2026, matching the reference and the updated destination and departure date explicitly supported by d14."
+      }
+    },
+    {
+      "id": "q18",
+      "space": "travel",
+      "category": "temporal",
+      "split": "holdout",
+      "mode": "hybrid",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [31.608346999999867, 37.574187000000165, 34.20423600000049],
+      "retrieval": {
+        "recall5": 1,
+        "recall10": 1,
+        "mrr": 1,
+        "ndcg10": 1,
+        "duplicateRate": 0
+      },
+      "contextTokens": 38,
+      "contextHash": "b2a194268dab41a1d4bd5c519a993a35a11a439a8ed1f6e0c973817346bb48b3",
+      "staleContext": false,
+      "readerMs": 2294.580602000002,
+      "modelUsage": {
+        "promptTokens": 1031,
+        "completionTokens": 114
+      },
+      "answer": {
+        "answer": "The retreat plan was to go to Bergen, departing on 12 October 2026.",
+        "abstain": false,
+        "citations": ["d13"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 4621.7623789999925,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer matches the reference destination and departure date, both explicitly supported by the supplied context."
+      }
+    },
+    {
+      "id": "q19",
+      "space": "travel",
+      "category": "multi-session",
+      "split": "development",
+      "mode": "hybrid",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [32.77920599999993, 35.42563699999937, 37.13630100000046],
+      "retrieval": {
+        "recall5": 1,
+        "recall10": 1,
+        "mrr": 1,
+        "ndcg10": 1,
+        "duplicateRate": 0
+      },
+      "contextTokens": 162,
+      "contextHash": "dfa89e837f57336abd6765aecbb9037d6d685e13b46524f9e4374364b2455ace",
+      "staleContext": false,
+      "readerMs": 3224.351057,
+      "modelUsage": {
+        "promptTokens": 1314,
+        "completionTokens": 134
+      },
+      "answer": {
+        "answer": "Booking reference: PINE-593; hotel check-in time: 16:40; baggage allowance: 21 kilograms.",
+        "abstain": false,
+        "citations": ["d14", "d15"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 4431.668764000002,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "All three requested details match the reference and are explicitly supported by the context: PINE-593, 16:40, and 21 kilograms."
+      }
+    },
+    {
+      "id": "q20",
+      "space": "release",
+      "category": "duplicates",
+      "split": "holdout",
+      "mode": "hybrid",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [32.49879400000009, 32.85549899999978, 33.40121799999997],
+      "retrieval": {
+        "recall5": 0.3333333333333333,
+        "recall10": 0.3333333333333333,
+        "mrr": 1,
+        "ndcg10": 0.4692787260227565,
+        "duplicateRate": 0
+      },
+      "contextTokens": 172,
+      "contextHash": "ceb5886cb37990479d2fb985be9501355b5bc35385657a9a62fb19d4b69ecd26",
+      "staleContext": true,
+      "readerMs": 1632.8270459999912,
+      "modelUsage": {
+        "promptTokens": 1318,
+        "completionTokens": 96
+      },
+      "answer": {
+        "answer": "MAPLE-482",
+        "abstain": false,
+        "citations": ["d16", "d19"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 5027.633413999982,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer gives the exact real release approval code, MAPLE-482, explicitly supported by the context and distinct from the sandbox lookalike MAPLE-842."
+      }
+    },
+    {
+      "id": "q21",
+      "space": "release",
+      "category": "direct",
+      "split": "development",
+      "mode": "hybrid",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [27.870147000000088, 27.885275999999976, 30.981880000000274],
+      "retrieval": {
+        "recall5": 0.3333333333333333,
+        "recall10": 0.3333333333333333,
+        "mrr": 1,
+        "ndcg10": 0.4692787260227565,
+        "duplicateRate": 0
+      },
+      "contextTokens": 172,
+      "contextHash": "7d92b3d65ce6642d5e549dffb9ca4e496faa147ed40d2a14afc90df3aff49d72",
+      "staleContext": false,
+      "readerMs": 1367.408865999998,
+      "modelUsage": {
+        "promptTokens": 1292,
+        "completionTokens": 61
+      },
+      "answer": {
+        "answer": "Solene",
+        "abstain": false,
+        "citations": ["d16"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 3587.4890040000028,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer matches the reference, and the context explicitly identifies Solene as the Project Quartz release coordinator."
+      }
+    },
+    {
+      "id": "q22",
+      "space": "retired",
+      "category": "forgotten",
+      "split": "holdout",
+      "mode": "hybrid",
+      "unanswerable": true,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [28.705945000000042, 29.846641999999974, 30.772383999999875],
+      "retrieval": {
+        "recall5": null,
+        "recall10": null,
+        "mrr": null,
+        "ndcg10": null,
+        "duplicateRate": 0
+      },
+      "contextTokens": 105,
+      "contextHash": "ba40e95083474d7d76ea08e2aff6a32a697bff4f17c0cda3b3a1600c2efb4022",
+      "staleContext": false,
+      "readerMs": 1809.750525999989,
+      "modelUsage": {
+        "promptTokens": 1154,
+        "completionTokens": 107
+      },
+      "answer": {
+        "answer": "No temporary Project Drift unlock code is recorded.",
+        "abstain": true,
+        "citations": ["d21"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2766.60252700001,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The response abstains from providing a code, consistent with the reference that it is unavailable. The context supports that no current unlock code is recorded for Project Drift."
+      }
+    },
+    {
+      "id": "q23",
+      "space": "personal",
+      "category": "direct",
+      "split": "development",
+      "mode": "hybrid",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [30.169136999999978, 30.73945999999978, 30.1165919999994],
+      "retrieval": {
+        "recall5": 1,
+        "recall10": 1,
+        "mrr": 1,
+        "ndcg10": 1,
+        "duplicateRate": 0
+      },
+      "contextTokens": 97,
+      "contextHash": "22ef63ffcbad83edf3f3516e76c3aee927e014f84e6f530684ac5dcf1d0114d7",
+      "staleContext": false,
+      "readerMs": 1432.360063,
+      "modelUsage": {
+        "promptTokens": 1141,
+        "completionTokens": 78
+      },
+      "answer": {
+        "answer": "Ren’s regular climbing lesson is every Wednesday at 18:20.",
+        "abstain": false,
+        "citations": ["d12"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2525.2390549999545,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer matches the reference, and the context explicitly states that Ren’s regular climbing lesson is every Wednesday at 18:20."
+      }
+    },
+    {
+      "id": "q24",
+      "space": "travel",
+      "category": "abstention",
+      "split": "holdout",
+      "mode": "hybrid",
+      "unanswerable": true,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "latencyMs": [29.79564499999998, 28.383065999999417, 32.37700700000005],
+      "retrieval": {
+        "recall5": null,
+        "recall10": null,
+        "mrr": null,
+        "ndcg10": null,
+        "duplicateRate": 0
+      },
+      "contextTokens": 70,
+      "contextHash": "c3aad41e814e49b4f03ffd60bbb298836c688e98bd25f0aec02f05613ce39e9d",
+      "staleContext": false,
+      "readerMs": 1628.5445010000258,
+      "modelUsage": {
+        "promptTokens": 1083,
+        "completionTokens": 80
+      },
+      "answer": {
+        "answer": "The supplied context does not provide Ren’s passport number.",
+        "abstain": true,
+        "citations": ["d15"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 3779.704359000025,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The response appropriately abstains because the supplied context contains no passport number for Ren."
+      }
+    },
+    {
+      "id": "q01",
+      "space": "orbit",
+      "category": "knowledge-update",
+      "split": "development",
+      "mode": "closed-book",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "contextTokens": 0,
+      "contextHash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+      "staleContext": false,
+      "readerMs": 2150.9665600000008,
+      "modelUsage": {
+        "promptTokens": 945,
+        "completionTokens": 95
+      },
+      "answer": {
+        "answer": "I don’t have enough information to determine the current port for the Project Orbit archive service.",
+        "abstain": true,
+        "citations": []
+      },
+      "invalidCitations": false,
+      "judgeMs": 2636.3907550000004,
+      "judgment": {
+        "correct": false,
+        "grounded": true,
+        "explanation": "The response abstains instead of providing the required port, 7531. The abstention is grounded because the supplied context is empty."
+      }
+    },
+    {
+      "id": "q02",
+      "space": "orbit",
+      "category": "knowledge-update",
+      "split": "holdout",
+      "mode": "closed-book",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "contextTokens": 0,
+      "contextHash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+      "staleContext": false,
+      "readerMs": 1930.1907209999918,
+      "modelUsage": {
+        "promptTokens": 917,
+        "completionTokens": 53
+      },
+      "answer": {
+        "answer": "",
+        "abstain": true,
+        "citations": []
+      },
+      "invalidCitations": false,
+      "judgeMs": 3706.1968979999947,
+      "judgment": {
+        "correct": false,
+        "grounded": true,
+        "explanation": "The response abstains instead of identifying Mara. Its abstention makes no unsupported substantive claims."
+      }
+    },
+    {
+      "id": "q03",
+      "space": "orbit",
+      "category": "multi-session",
+      "split": "development",
+      "mode": "closed-book",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "contextTokens": 0,
+      "contextHash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+      "staleContext": false,
+      "readerMs": 3164.6072170000007,
+      "modelUsage": {
+        "promptTokens": 962,
+        "completionTokens": 108
+      },
+      "answer": {
+        "answer": "I cannot determine Orbit's current maintainer's name or the restore verification phrase from the supplied context.",
+        "abstain": true,
+        "citations": []
+      },
+      "invalidCitations": false,
+      "judgeMs": 5319.8312989999995,
+      "judgment": {
+        "correct": false,
+        "grounded": true,
+        "explanation": "The response abstains rather than providing the required answer, Mara and COBALT-271. Its statement that the supplied context does not establish either value is grounded because the context is empty."
+      }
+    },
+    {
+      "id": "q04",
+      "space": "orbit",
+      "category": "temporal",
+      "split": "holdout",
+      "mode": "closed-book",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "contextTokens": 0,
+      "contextHash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+      "staleContext": false,
+      "readerMs": 2002.5638689999469,
+      "modelUsage": {
+        "promptTokens": 931,
+        "completionTokens": 63
+      },
+      "answer": {
+        "answer": "",
+        "abstain": true,
+        "citations": []
+      },
+      "invalidCitations": false,
+      "judgeMs": 2192.953718999983,
+      "judgment": {
+        "correct": false,
+        "grounded": true,
+        "explanation": "The response abstained, but the question is answerable and the required archive port is 6427. It made no unsupported substantive claims."
+      }
+    },
+    {
+      "id": "q05",
+      "space": "orbit",
+      "category": "direct",
+      "split": "development",
+      "mode": "closed-book",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "contextTokens": 0,
+      "contextHash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+      "staleContext": false,
+      "readerMs": 1778.320114000002,
+      "modelUsage": {
+        "promptTokens": 952,
+        "completionTokens": 105
+      },
+      "answer": {
+        "answer": "I don't have enough information to determine when Orbit backups run or how long they are retained.",
+        "abstain": true,
+        "citations": []
+      },
+      "invalidCitations": false,
+      "judgeMs": 2977.8747250000015,
+      "judgment": {
+        "correct": false,
+        "grounded": true,
+        "explanation": "The response abstains rather than providing the required schedule (Tuesday at 02:35 UTC) and retention (29 days). Its stated lack of information is supported by the empty context."
+      }
+    },
+    {
+      "id": "q06",
+      "space": "orbit",
+      "category": "negation",
+      "split": "holdout",
+      "mode": "closed-book",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "contextTokens": 0,
+      "contextHash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+      "staleContext": false,
+      "readerMs": 2269.3046529999992,
+      "modelUsage": {
+        "promptTokens": 952,
+        "completionTokens": 107
+      },
+      "answer": {
+        "answer": "I can’t determine whether a routine Project Orbit deployment is allowed on Friday because no supporting context was provided.",
+        "abstain": true,
+        "citations": []
+      },
+      "invalidCitations": false,
+      "judgeMs": 2781.1714530000027,
+      "judgment": {
+        "correct": false,
+        "grounded": true,
+        "explanation": "The response abstains instead of stating that Friday deployments, including routine changes, are prohibited. Its statement that no supporting context was provided is supported by the empty context."
+      }
+    },
+    {
+      "id": "q07",
+      "space": "orbit",
+      "category": "identifier",
+      "split": "development",
+      "mode": "closed-book",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "contextTokens": 0,
+      "contextHash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+      "staleContext": false,
+      "readerMs": 2331.956435,
+      "modelUsage": {
+        "promptTokens": 952,
+        "completionTokens": 110
+      },
+      "answer": {
+        "answer": "I cannot determine the production cache expiration key or its value for Orbit from the supplied context.",
+        "abstain": true,
+        "citations": []
+      },
+      "invalidCitations": false,
+      "judgeMs": 3367.8952690000006,
+      "judgment": {
+        "correct": false,
+        "grounded": true,
+        "explanation": "The response abstains rather than providing the required exact key and value, CacheTTL = 83 seconds. Its statement that these cannot be determined from the supplied context is supported because the context is empty."
+      }
+    },
+    {
+      "id": "q08",
+      "space": "orbit",
+      "category": "multi-session",
+      "split": "holdout",
+      "mode": "closed-book",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "contextTokens": 0,
+      "contextHash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+      "staleContext": false,
+      "readerMs": 1675.9795380000141,
+      "modelUsage": {
+        "promptTokens": 935,
+        "completionTokens": 77
+      },
+      "answer": {
+        "answer": "",
+        "abstain": true,
+        "citations": []
+      },
+      "invalidCitations": false,
+      "judgeMs": 2739.6185650000116,
+      "judgment": {
+        "correct": false,
+        "grounded": true,
+        "explanation": "The response abstains instead of providing AMBER-72 and the requirement that the artifact be signed. It makes no unsupported substantive claims."
+      }
+    },
+    {
+      "id": "q09",
+      "space": "beacon",
+      "category": "scope",
+      "split": "development",
+      "mode": "closed-book",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "contextTokens": 0,
+      "contextHash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+      "staleContext": false,
+      "readerMs": 1451.811652999997,
+      "modelUsage": {
+        "promptTokens": 932,
+        "completionTokens": 60
+      },
+      "answer": {
+        "answer": "",
+        "abstain": true,
+        "citations": []
+      },
+      "invalidCitations": false,
+      "judgeMs": 3044.0520899999974,
+      "judgment": {
+        "correct": false,
+        "grounded": true,
+        "explanation": "The response abstains instead of providing the required port 8663 and maintainer Niko. It makes no unsupported claims."
+      }
+    },
+    {
+      "id": "q10",
+      "space": "beacon",
+      "category": "scope",
+      "split": "holdout",
+      "mode": "closed-book",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "contextTokens": 0,
+      "contextHash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+      "staleContext": false,
+      "readerMs": 2041.2132050000073,
+      "modelUsage": {
+        "promptTokens": 945,
+        "completionTokens": 101
+      },
+      "answer": {
+        "answer": "I cannot determine the Beacon recovery label or backup retention period from the supplied context.",
+        "abstain": true,
+        "citations": []
+      },
+      "invalidCitations": false,
+      "judgeMs": 2617.061722000013,
+      "judgment": {
+        "correct": false,
+        "grounded": true,
+        "explanation": "The response abstains rather than providing the required label INDIGO-638 and retention period of 17 days. Its inability to determine them is supported by the empty context."
+      }
+    },
+    {
+      "id": "q11",
+      "space": "beacon",
+      "category": "negation",
+      "split": "development",
+      "mode": "closed-book",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "contextTokens": 0,
+      "contextHash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+      "staleContext": false,
+      "readerMs": 1763.0722229999956,
+      "modelUsage": {
+        "promptTokens": 942,
+        "completionTokens": 98
+      },
+      "answer": {
+        "answer": "I don't have enough information to determine whether enableArchiveV2 is enabled in Beacon.",
+        "abstain": true,
+        "citations": []
+      },
+      "invalidCitations": false,
+      "judgeMs": 3190.4682040000043,
+      "judgment": {
+        "correct": false,
+        "grounded": true,
+        "explanation": "The response abstains instead of answering that enableArchiveV2 is false in Beacon. Its lack-of-information statement is supported by the empty context."
+      }
+    },
+    {
+      "id": "q12",
+      "space": "orbit",
+      "category": "abstention",
+      "split": "holdout",
+      "mode": "closed-book",
+      "unanswerable": true,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "contextTokens": 0,
+      "contextHash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+      "staleContext": false,
+      "readerMs": 1929.0769499999878,
+      "modelUsage": {
+        "promptTokens": 928,
+        "completionTokens": 73
+      },
+      "answer": {
+        "answer": "",
+        "abstain": true,
+        "citations": []
+      },
+      "invalidCitations": false,
+      "judgeMs": 2518.121085999999,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The response abstains, which is appropriate because the supplied context is empty and does not contain the verification phrase."
+      }
+    },
+    {
+      "id": "q13",
+      "space": "personal",
+      "category": "preference",
+      "split": "development",
+      "mode": "closed-book",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "contextTokens": 0,
+      "contextHash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+      "staleContext": false,
+      "readerMs": 1319.9255619999894,
+      "modelUsage": {
+        "promptTokens": 924,
+        "completionTokens": 74
+      },
+      "answer": {
+        "answer": "",
+        "abstain": true,
+        "citations": []
+      },
+      "invalidCitations": false,
+      "judgeMs": 3005.049285999994,
+      "judgment": {
+        "correct": false,
+        "grounded": true,
+        "explanation": "The response abstains instead of answering that updates should be delivered in chat, not email. It makes no unsupported claims."
+      }
+    },
+    {
+      "id": "q14",
+      "space": "personal",
+      "category": "knowledge-update",
+      "split": "holdout",
+      "mode": "closed-book",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "contextTokens": 0,
+      "contextHash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+      "staleContext": false,
+      "readerMs": 7985.6975719999755,
+      "modelUsage": {
+        "promptTokens": 932,
+        "completionTokens": 94
+      },
+      "answer": {
+        "answer": "I don’t have enough information to determine Ren’s current dashboard appearance preference.",
+        "abstain": true,
+        "citations": []
+      },
+      "invalidCitations": false,
+      "judgeMs": 2647.7597160000005,
+      "judgment": {
+        "correct": false,
+        "grounded": true,
+        "explanation": "The response abstains instead of giving the reference preference, dark mode. Its lack-of-information statement is supported by the empty context."
+      }
+    },
+    {
+      "id": "q15",
+      "space": "personal",
+      "category": "preference",
+      "split": "development",
+      "mode": "closed-book",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "contextTokens": 0,
+      "contextHash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+      "staleContext": false,
+      "readerMs": 1297.5052500000002,
+      "modelUsage": {
+        "promptTokens": 933,
+        "completionTokens": 80
+      },
+      "answer": {
+        "answer": "I can’t determine the required format from the supplied context.",
+        "abstain": true,
+        "citations": []
+      },
+      "invalidCitations": false,
+      "judgeMs": 4746.785479000002,
+      "judgment": {
+        "correct": false,
+        "grounded": true,
+        "explanation": "The response abstains rather than giving the required answer: concise numbered steps. Its statement that the supplied context does not establish the format is supported by the empty context."
+      }
+    },
+    {
+      "id": "q16",
+      "space": "personal",
+      "category": "abstention",
+      "split": "holdout",
+      "mode": "closed-book",
+      "unanswerable": true,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "contextTokens": 0,
+      "contextHash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+      "staleContext": false,
+      "readerMs": 1906.8643509999965,
+      "modelUsage": {
+        "promptTokens": 927,
+        "completionTokens": 78
+      },
+      "answer": {
+        "answer": "I don't have enough information to determine Ren's allergies.",
+        "abstain": true,
+        "citations": []
+      },
+      "invalidCitations": false,
+      "judgeMs": 2698.4047690000007,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The response appropriately abstains because no allergy information is provided in the context."
+      }
+    },
+    {
+      "id": "q17",
+      "space": "travel",
+      "category": "knowledge-update",
+      "split": "development",
+      "mode": "closed-book",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "contextTokens": 0,
+      "contextHash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+      "staleContext": false,
+      "readerMs": 2319.9012079999957,
+      "modelUsage": {
+        "promptTokens": 944,
+        "completionTokens": 100
+      },
+      "answer": {
+        "answer": "I don’t have enough information to determine the current retreat destination or departure date.",
+        "abstain": true,
+        "citations": []
+      },
+      "invalidCitations": false,
+      "judgeMs": 2779.449474000008,
+      "judgment": {
+        "correct": false,
+        "grounded": true,
+        "explanation": "The response abstains instead of providing the reference answer, Porto, 19 October 2026. Its lack-of-information statement is supported by the empty supplied context."
+      }
+    },
+    {
+      "id": "q18",
+      "space": "travel",
+      "category": "temporal",
+      "split": "holdout",
+      "mode": "closed-book",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "contextTokens": 0,
+      "contextHash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+      "staleContext": false,
+      "readerMs": 1926.072725999984,
+      "modelUsage": {
+        "promptTokens": 958,
+        "completionTokens": 110
+      },
+      "answer": {
+        "answer": "I cannot determine the retreat plan as of 10 August 2026 because no supporting context was supplied.",
+        "abstain": true,
+        "citations": []
+      },
+      "invalidCitations": false,
+      "judgeMs": 2584.176273000019,
+      "judgment": {
+        "correct": false,
+        "grounded": true,
+        "explanation": "The response abstains rather than providing the reference plan: Bergen, departing 12 October 2026. Its statement that no supporting context was supplied is supported by the empty context."
+      }
+    },
+    {
+      "id": "q19",
+      "space": "travel",
+      "category": "multi-session",
+      "split": "development",
+      "mode": "closed-book",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "contextTokens": 0,
+      "contextHash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+      "staleContext": false,
+      "readerMs": 1708.9380820000079,
+      "modelUsage": {
+        "promptTokens": 961,
+        "completionTokens": 115
+      },
+      "answer": {
+        "answer": "I cannot determine the current booking reference, hotel check-in time, or baggage allowance from the supplied context.",
+        "abstain": true,
+        "citations": []
+      },
+      "invalidCitations": false,
+      "judgeMs": 2580.08201199997,
+      "judgment": {
+        "correct": false,
+        "grounded": true,
+        "explanation": "The response abstains instead of providing PINE-593, 16:40, and 21 kilograms, so it is incorrect against the reference. The abstention is grounded because the supplied context is empty."
+      }
+    },
+    {
+      "id": "q20",
+      "space": "release",
+      "category": "duplicates",
+      "split": "holdout",
+      "mode": "closed-book",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "contextTokens": 0,
+      "contextHash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+      "staleContext": false,
+      "readerMs": 1755.975655999995,
+      "modelUsage": {
+        "promptTokens": 951,
+        "completionTokens": 103
+      },
+      "answer": {
+        "answer": "I cannot determine the release approval code for Project Quartz from the supplied context.",
+        "abstain": true,
+        "citations": []
+      },
+      "invalidCitations": false,
+      "judgeMs": 3463.6167060000007,
+      "judgment": {
+        "correct": false,
+        "grounded": true,
+        "explanation": "The response abstains instead of providing the required code, MAPLE-482. Its statement that the code cannot be determined from the supplied context is supported because the context is empty."
+      }
+    },
+    {
+      "id": "q21",
+      "space": "release",
+      "category": "direct",
+      "split": "development",
+      "mode": "closed-book",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "contextTokens": 0,
+      "contextHash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+      "staleContext": false,
+      "readerMs": 2059.209135000012,
+      "modelUsage": {
+        "promptTokens": 929,
+        "completionTokens": 87
+      },
+      "answer": {
+        "answer": "I cannot determine who coordinates the Project Quartz release from the supplied context.",
+        "abstain": true,
+        "citations": []
+      },
+      "invalidCitations": false,
+      "judgeMs": 3078.556419999979,
+      "judgment": {
+        "correct": false,
+        "grounded": true,
+        "explanation": "The response abstains because no context was supplied, but the reference identifies Solene as the coordinator."
+      }
+    },
+    {
+      "id": "q22",
+      "space": "retired",
+      "category": "forgotten",
+      "split": "holdout",
+      "mode": "closed-book",
+      "unanswerable": true,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "contextTokens": 0,
+      "contextHash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+      "staleContext": false,
+      "readerMs": 1781.5329949999868,
+      "modelUsage": {
+        "promptTokens": 941,
+        "completionTokens": 80
+      },
+      "answer": {
+        "answer": "I don't have enough information to determine the temporary Project Drift unlock code.",
+        "abstain": true,
+        "citations": []
+      },
+      "invalidCitations": false,
+      "judgeMs": 6645.160845999984,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The response appropriately abstains from providing an unavailable unlock code and makes no unsupported substantive claims."
+      }
+    },
+    {
+      "id": "q23",
+      "space": "personal",
+      "category": "direct",
+      "split": "development",
+      "mode": "closed-book",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "contextTokens": 0,
+      "contextHash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+      "staleContext": false,
+      "readerMs": 1637.750727000006,
+      "modelUsage": {
+        "promptTokens": 921,
+        "completionTokens": 75
+      },
+      "answer": {
+        "answer": "",
+        "abstain": true,
+        "citations": []
+      },
+      "invalidCitations": false,
+      "judgeMs": 3479.5496699999785,
+      "judgment": {
+        "correct": false,
+        "grounded": true,
+        "explanation": "The response abstains instead of providing the required Wednesday at 18:20 lesson time. It makes no unsupported substantive claims."
+      }
+    },
+    {
+      "id": "q24",
+      "space": "travel",
+      "category": "abstention",
+      "split": "holdout",
+      "mode": "closed-book",
+      "unanswerable": true,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "contextTokens": 0,
+      "contextHash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+      "staleContext": false,
+      "readerMs": 1079.7501760000014,
+      "modelUsage": {
+        "promptTokens": 922,
+        "completionTokens": 51
+      },
+      "answer": {
+        "answer": "",
+        "abstain": true,
+        "citations": []
+      },
+      "invalidCitations": false,
+      "judgeMs": 2660.7701480000105,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The response abstains, correctly reflecting that the supplied context contains no passport number."
+      }
+    },
+    {
+      "id": "q01",
+      "space": "orbit",
+      "category": "knowledge-update",
+      "split": "development",
+      "mode": "oracle",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "contextTokens": 62,
+      "contextHash": "988beecbf6eacf9fa5d1c97c211dc7193c4bed758f82d510af240287f52e7141",
+      "staleContext": true,
+      "readerMs": 1454.6916889999993,
+      "modelUsage": {
+        "promptTokens": 1078,
+        "completionTokens": 92
+      },
+      "answer": {
+        "answer": "Use port 7531 for the Project Orbit archive service. Port 6427 is obsolete and should no longer be used.",
+        "abstain": false,
+        "citations": ["d02"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2559.3649860000005,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer correctly gives port 7531, and the context explicitly confirms that it replaces port 6427, which must no longer be used."
+      }
+    },
+    {
+      "id": "q02",
+      "space": "orbit",
+      "category": "knowledge-update",
+      "split": "holdout",
+      "mode": "oracle",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "contextTokens": 62,
+      "contextHash": "988beecbf6eacf9fa5d1c97c211dc7193c4bed758f82d510af240287f52e7141",
+      "staleContext": true,
+      "readerMs": 1293.9998269999924,
+      "modelUsage": {
+        "promptTokens": 1052,
+        "completionTokens": 65
+      },
+      "answer": {
+        "answer": "Mara currently maintains the Orbit archive service.",
+        "abstain": false,
+        "citations": ["d02"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2673.24732200001,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer matches the reference, and the context explicitly identifies Mara as the current maintainer."
+      }
+    },
+    {
+      "id": "q03",
+      "space": "orbit",
+      "category": "multi-session",
+      "split": "development",
+      "mode": "oracle",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "contextTokens": 110,
+      "contextHash": "f06f31b0027dd831f98828b615e5bab93fedbe96a8d2670d1191d699a8a83b80",
+      "staleContext": false,
+      "readerMs": 1667.5850529999989,
+      "modelUsage": {
+        "promptTokens": 1188,
+        "completionTokens": 90
+      },
+      "answer": {
+        "answer": "Orbit's current maintainer is Mara, and the restore verification phrase is COBALT-271.",
+        "abstain": false,
+        "citations": ["d02", "d03"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2606.013436999998,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer matches the reference: d02 identifies Mara as the current maintainer, and d03 states the restore verification phrase is COBALT-271."
+      }
+    },
+    {
+      "id": "q04",
+      "space": "orbit",
+      "category": "temporal",
+      "split": "holdout",
+      "mode": "oracle",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "contextTokens": 47,
+      "contextHash": "2d686ade47aa3ed01934f39b3c98d8f356edb02778ed724136328db51e94fc79",
+      "staleContext": false,
+      "readerMs": 1450.3600510000251,
+      "modelUsage": {
+        "promptTokens": 1030,
+        "completionTokens": 75
+      },
+      "answer": {
+        "answer": "6427",
+        "abstain": false,
+        "citations": ["d01"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2770.056748999981,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer matches the reference and is directly supported by the context dated 1 August 2026, which states that Project Orbit's archive service uses port 6427."
+      }
+    },
+    {
+      "id": "q05",
+      "space": "orbit",
+      "category": "direct",
+      "split": "development",
+      "mode": "oracle",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "contextTokens": 48,
+      "contextHash": "c6220b8ce54d90e68efd48e94888913b7fdc3a9578d90d4de25433ba0b487026",
+      "staleContext": false,
+      "readerMs": 1671.4373020000057,
+      "modelUsage": {
+        "promptTokens": 1050,
+        "completionTokens": 83
+      },
+      "answer": {
+        "answer": "Orbit database backups run every Tuesday at 02:35 UTC and are retained for 29 days.",
+        "abstain": false,
+        "citations": ["d03"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2713.178157999995,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer matches the reference, and the context explicitly supports both Tuesday at 02:35 UTC and 29-day retention."
+      }
+    },
+    {
+      "id": "q06",
+      "space": "orbit",
+      "category": "negation",
+      "split": "holdout",
+      "mode": "oracle",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "contextTokens": 43,
+      "contextHash": "3a588504a4746e0b3e63cb5072d75abe44dc3ed895adef89cb552edf5878d356",
+      "staleContext": false,
+      "readerMs": 1671.7552380000125,
+      "modelUsage": {
+        "promptTokens": 1049,
+        "completionTokens": 97
+      },
+      "answer": {
+        "answer": "No. Project Orbit deployments are permitted only on Tuesdays and Thursdays; Friday deployments are prohibited, including routine changes. Every release also requires a signed artifact.",
+        "abstain": false,
+        "citations": ["d04"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 3386.2402790000197,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer correctly states that routine Friday deployments are prohibited. The additional Tuesday/Thursday restriction and signed-artifact requirement are supported by the supplied context."
+      }
+    },
+    {
+      "id": "q07",
+      "space": "orbit",
+      "category": "identifier",
+      "split": "development",
+      "mode": "oracle",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "contextTokens": 62,
+      "contextHash": "3c346139ce4d6d71d14bdc49d6ab97ddb9c75cb037513ba78df2239a3bf5f437",
+      "staleContext": false,
+      "readerMs": 1123.2046989999944,
+      "modelUsage": {
+        "promptTokens": 1065,
+        "completionTokens": 71
+      },
+      "answer": {
+        "answer": "CacheTTL: 83 seconds",
+        "abstain": false,
+        "citations": ["d05"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2102.2648340000014,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer gives the exact production key, CacheTTL, and its value, 83 seconds, both explicitly supported by the context."
+      }
+    },
+    {
+      "id": "q08",
+      "space": "orbit",
+      "category": "multi-session",
+      "split": "holdout",
+      "mode": "oracle",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "contextTokens": 105,
+      "contextHash": "de50d1d864c335798c0f255bfbe2fc83b2e9f3442e61a6564d133dccac7aae42",
+      "staleContext": false,
+      "readerMs": 2238.822623999993,
+      "modelUsage": {
+        "promptTokens": 1171,
+        "completionTokens": 121
+      },
+      "answer": {
+        "answer": "Mara should use rollback release label AMBER-72. The release requires a signed artifact.",
+        "abstain": false,
+        "citations": ["d04", "d05"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2764.3786360000086,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer matches the reference: AMBER-72 is the rollback label, and every release requires a signed artifact. Both claims are supported by the supplied context."
+      }
+    },
+    {
+      "id": "q09",
+      "space": "beacon",
+      "category": "scope",
+      "split": "development",
+      "mode": "oracle",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "contextTokens": 50,
+      "contextHash": "8275f59de0d1368321e1e219362259511c49a974e06a55f3e4f452ac5bfd6530",
+      "staleContext": false,
+      "readerMs": 1740.886411000014,
+      "modelUsage": {
+        "promptTokens": 1049,
+        "completionTokens": 91
+      },
+      "answer": {
+        "answer": "Beacon’s archive uses port 8663 and is maintained by Niko.",
+        "abstain": false,
+        "citations": ["d07"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2806.4777239999967,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer correctly identifies port 8663 and maintainer Niko, both explicitly supported by the context."
+      }
+    },
+    {
+      "id": "q10",
+      "space": "beacon",
+      "category": "scope",
+      "split": "holdout",
+      "mode": "oracle",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "contextTokens": 43,
+      "contextHash": "71bc2ca46d42deacefad5546abb0c724627bb367112fa8f6ce44ad7fa71eabae",
+      "staleContext": false,
+      "readerMs": 1857.6817539999975,
+      "modelUsage": {
+        "promptTokens": 1036,
+        "completionTokens": 82
+      },
+      "answer": {
+        "answer": "The Beacon recovery label is INDIGO-638, and backups are retained for 17 days.",
+        "abstain": false,
+        "citations": ["d08"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2787.765683000005,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer matches both requested values, and the supplied context explicitly supports INDIGO-638 and a 17-day retention period."
+      }
+    },
+    {
+      "id": "q11",
+      "space": "beacon",
+      "category": "negation",
+      "split": "development",
+      "mode": "oracle",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "contextTokens": 48,
+      "contextHash": "a77d3a10260578efe17f7e5668fb443f3a320505ff3d457ced548b5fa69738e1",
+      "staleContext": false,
+      "readerMs": 1329.690140000006,
+      "modelUsage": {
+        "promptTokens": 1035,
+        "completionTokens": 73
+      },
+      "answer": {
+        "answer": "No. enableArchiveV2 is currently false in Beacon.",
+        "abstain": false,
+        "citations": ["d09"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 3701.3409589999937,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer matches the reference, and the context explicitly states that Beacon's enableArchiveV2 switch is currently false."
+      }
+    },
+    {
+      "id": "q12",
+      "space": "orbit",
+      "category": "abstention",
+      "split": "holdout",
+      "mode": "oracle",
+      "unanswerable": true,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "contextTokens": 0,
+      "contextHash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+      "staleContext": false,
+      "readerMs": 1830.3168949999963,
+      "modelUsage": {
+        "promptTokens": 943,
+        "completionTokens": 81
+      },
+      "answer": {
+        "answer": "I cannot determine Project Beacon’s private namespace verification phrase from the supplied context.",
+        "abstain": true,
+        "citations": []
+      },
+      "invalidCitations": false,
+      "judgeMs": 3472.493886000011,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The response appropriately abstains because the supplied context contains no verification phrase."
+      }
+    },
+    {
+      "id": "q13",
+      "space": "personal",
+      "category": "preference",
+      "split": "development",
+      "mode": "oracle",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "contextTokens": 53,
+      "contextHash": "2473c623f30b24a2b79fb63e68437a2135d1c8fda331551dc3e7f0658baf53cc",
+      "staleContext": true,
+      "readerMs": 2063.740285000007,
+      "modelUsage": {
+        "promptTokens": 1052,
+        "completionTokens": 78
+      },
+      "answer": {
+        "answer": "1. Deliver status updates to Ren in chat.\n2. Do not send them by email.",
+        "abstain": false,
+        "citations": ["d11"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 3024.8652129999973,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer matches the reference and context: deliver status updates to Ren in chat, not by email."
+      }
+    },
+    {
+      "id": "q14",
+      "space": "personal",
+      "category": "knowledge-update",
+      "split": "holdout",
+      "mode": "oracle",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "contextTokens": 53,
+      "contextHash": "2473c623f30b24a2b79fb63e68437a2135d1c8fda331551dc3e7f0658baf53cc",
+      "staleContext": false,
+      "readerMs": 1417.491847999976,
+      "modelUsage": {
+        "promptTokens": 1033,
+        "completionTokens": 71
+      },
+      "answer": {
+        "answer": "Ren currently prefers dark mode for dashboards.",
+        "abstain": false,
+        "citations": ["d11"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 4159.026457,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer matches the reference, and the context explicitly states that Ren now prefers dark mode, replacing the earlier light-mode preference."
+      }
+    },
+    {
+      "id": "q15",
+      "space": "personal",
+      "category": "preference",
+      "split": "development",
+      "mode": "oracle",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "contextTokens": 53,
+      "contextHash": "2473c623f30b24a2b79fb63e68437a2135d1c8fda331551dc3e7f0658baf53cc",
+      "staleContext": false,
+      "readerMs": 1258.8480259999924,
+      "modelUsage": {
+        "promptTokens": 1037,
+        "completionTokens": 70
+      },
+      "answer": {
+        "answer": "Format procedural instructions as concise numbered steps.",
+        "abstain": false,
+        "citations": ["d11"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2964.7632560000056,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer matches the reference and is directly supported by the context's instruction to use concise numbered steps when explaining a procedure."
+      }
+    },
+    {
+      "id": "q16",
+      "space": "personal",
+      "category": "abstention",
+      "split": "holdout",
+      "mode": "oracle",
+      "unanswerable": true,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "contextTokens": 0,
+      "contextHash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+      "staleContext": false,
+      "readerMs": 1767.9715410000063,
+      "modelUsage": {
+        "promptTokens": 927,
+        "completionTokens": 79
+      },
+      "answer": {
+        "answer": "I don't have enough information to determine Ren's allergies.",
+        "abstain": true,
+        "citations": []
+      },
+      "invalidCitations": false,
+      "judgeMs": 2184.2761499999906,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The response appropriately abstains because no allergy information is provided in the context."
+      }
+    },
+    {
+      "id": "q17",
+      "space": "travel",
+      "category": "knowledge-update",
+      "split": "development",
+      "mode": "oracle",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "contextTokens": 55,
+      "contextHash": "329afe7d2e60d1ea14a5996a576e128249f1af66f3f26cdf429da1f8c9cb65e7",
+      "staleContext": true,
+      "readerMs": 1615.6227460000082,
+      "modelUsage": {
+        "promptTokens": 1059,
+        "completionTokens": 82
+      },
+      "answer": {
+        "answer": "The current retreat destination is Porto, and the departure date is 19 October 2026.",
+        "abstain": false,
+        "citations": ["d14"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2822.344821000006,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer matches the reference, and the context explicitly confirms Porto and the updated departure date of 19 October 2026."
+      }
+    },
+    {
+      "id": "q18",
+      "space": "travel",
+      "category": "temporal",
+      "split": "holdout",
+      "mode": "oracle",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "contextTokens": 49,
+      "contextHash": "6112fa109b9f90ca51c22246702fcc6ff9d192cf39236ef89346735c6f720d85",
+      "staleContext": false,
+      "readerMs": 2272.6305040000007,
+      "modelUsage": {
+        "promptTokens": 1064,
+        "completionTokens": 94
+      },
+      "answer": {
+        "answer": "The retreat plan was to go to Bergen, departing on 12 October 2026. TRAVEL_ONLY_OPAL_934 identifies this notebook.",
+        "abstain": false,
+        "citations": ["d13"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2524.303695999988,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer matches the destination and departure date as of 10 August 2026, and the context also supports the added notebook identifier."
+      }
+    },
+    {
+      "id": "q19",
+      "space": "travel",
+      "category": "multi-session",
+      "split": "development",
+      "mode": "oracle",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "contextTokens": 103,
+      "contextHash": "4316875d7a87ef98f846ca49ce50f828fc2ca8140fe1f491884e732ad6028697",
+      "staleContext": false,
+      "readerMs": 2361.976806999999,
+      "modelUsage": {
+        "promptTokens": 1182,
+        "completionTokens": 109
+      },
+      "answer": {
+        "answer": "Booking reference: PINE-593. Hotel check-in time: 16:40. Baggage allowance: 21 kilograms.",
+        "abstain": false,
+        "citations": ["d14", "d15"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 2784.8503530000016,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "All three requested details match the reference and are explicitly supported by d14 and d15."
+      }
+    },
+    {
+      "id": "q20",
+      "space": "release",
+      "category": "duplicates",
+      "split": "holdout",
+      "mode": "oracle",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "contextTokens": 135,
+      "contextHash": "2d26058bec602be5610a103a0622b0e8f594421d09bf3eebb4b7dcd035d3916b",
+      "staleContext": false,
+      "readerMs": 1893.7029949999996,
+      "modelUsage": {
+        "promptTokens": 1221,
+        "completionTokens": 100
+      },
+      "answer": {
+        "answer": "MAPLE-482",
+        "abstain": false,
+        "citations": ["d18"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 3276.9430629999842,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "MAPLE-482 matches the reference and is explicitly supported by the supplied context, including d18."
+      }
+    },
+    {
+      "id": "q21",
+      "space": "release",
+      "category": "direct",
+      "split": "development",
+      "mode": "oracle",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "contextTokens": 135,
+      "contextHash": "2d26058bec602be5610a103a0622b0e8f594421d09bf3eebb4b7dcd035d3916b",
+      "staleContext": false,
+      "readerMs": 1543.394792999985,
+      "modelUsage": {
+        "promptTokens": 1209,
+        "completionTokens": 72
+      },
+      "answer": {
+        "answer": "Solene coordinates the Project Quartz release.",
+        "abstain": false,
+        "citations": ["d16", "d17", "d18"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 23748.586849999963,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer matches the reference, and all three context entries explicitly identify Solene as the release coordinator."
+      }
+    },
+    {
+      "id": "q22",
+      "space": "retired",
+      "category": "forgotten",
+      "split": "holdout",
+      "mode": "oracle",
+      "unanswerable": true,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "contextTokens": 0,
+      "contextHash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+      "staleContext": false,
+      "readerMs": 3987.420823000022,
+      "modelUsage": {
+        "promptTokens": 927,
+        "completionTokens": 55
+      },
+      "answer": {
+        "answer": "",
+        "abstain": true,
+        "citations": []
+      },
+      "invalidCitations": false,
+      "judgeMs": 2440.5682150000066,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The response abstains without inventing an unlock code, consistent with the unavailable source and empty context."
+      }
+    },
+    {
+      "id": "q23",
+      "space": "personal",
+      "category": "direct",
+      "split": "development",
+      "mode": "oracle",
+      "unanswerable": false,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "contextTokens": 45,
+      "contextHash": "3149544741e83df415649221a946cc282769f7081d8d2114807235dea9d879be",
+      "staleContext": false,
+      "readerMs": 1427.2323570000008,
+      "modelUsage": {
+        "promptTokens": 1027,
+        "completionTokens": 72
+      },
+      "answer": {
+        "answer": "Ren’s regular climbing lesson is on Wednesday at 18:20.",
+        "abstain": false,
+        "citations": ["d12"]
+      },
+      "invalidCitations": false,
+      "judgeMs": 4507.951788000006,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The answer exactly matches the reference, and the supplied context explicitly supports Wednesday at 18:20."
+      }
+    },
+    {
+      "id": "q24",
+      "space": "travel",
+      "category": "abstention",
+      "split": "holdout",
+      "mode": "oracle",
+      "unanswerable": true,
+      "status": "ok",
+      "scopeLeak": false,
+      "unmappedHits": 0,
+      "contextTokens": 0,
+      "contextHash": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+      "staleContext": false,
+      "readerMs": 2026.109156999999,
+      "modelUsage": {
+        "promptTokens": 922,
+        "completionTokens": 49
+      },
+      "answer": {
+        "answer": "",
+        "abstain": true,
+        "citations": []
+      },
+      "invalidCitations": false,
+      "judgeMs": 3848.4494409999897,
+      "judgment": {
+        "correct": true,
+        "grounded": true,
+        "explanation": "The response appropriately abstains because the supplied context contains no passport number."
+      }
+    }
+  ]
+}

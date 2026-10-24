@@ -1,0 +1,8 @@
+{
+  "sourceInterface": "063b86bfb347336def3a084153f40bfea1e2dfd6",
+  "ingest": true,
+  "repeatDidNotDuplicate": true,
+  "indexing": true,
+  "realSearch": true,
+  "ownedCleanup": true
+}
