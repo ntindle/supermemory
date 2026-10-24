@@ -163,7 +163,7 @@ export const addMemory = action({
   handler: async (ctx, { userId, content }) => {
     // Add to Supermemory
     await memory.add(userId, { content });
-    
+
     // Store in Convex
     // Note: in production, handle partial failures — if the Convex mutation
     // fails after the Supermemory write succeeds, the two stores will be out of sync.

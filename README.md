@@ -1,3 +1,7 @@
+> **ntindle fork:** locally maintained server patches and migration tooling live in
+> [`patches/postgres/`](patches/postgres/README.md). See [FORK.md](FORK.md) for
+> maintenance and validation. The upstream project README follows.
+
 <p align="center">
   <picture>
     <source srcset="apps/web/public/logo-fullmark.svg" media="(prefers-color-scheme: dark)">
@@ -36,7 +40,7 @@
 
 ---
 
-Supermemory is the memory and context layer for AI. **#1 on [LongMemEval](https://github.com/xiaowu0162/LongMemEval), [LoCoMo](https://github.com/snap-research/locomo), and [ConvoMem](https://github.com/Salesforce/ConvoMem)** — the three major benchmarks for AI memory. 
+Supermemory is the memory and context layer for AI. **#1 on [LongMemEval](https://github.com/xiaowu0162/LongMemEval), [LoCoMo](https://github.com/snap-research/locomo), and [ConvoMem](https://github.com/Salesforce/ConvoMem)** — the three major benchmarks for AI memory.
 
 We are a research lab building the engine, plugins and tools around it.
 
@@ -52,7 +56,7 @@ It automatically learns from conversations, extracts facts, builds user profiles
 | 🔌 **Connectors** | Google Drive · Gmail · Notion · OneDrive · GitHub — auto-sync with real-time webhooks. |
 | 📄 **Multi-modal Extractors** | PDFs, images (OCR), videos (transcription), code (AST-aware chunking). Upload and it works. |
 
-All of this is in our single memory structure and ontology. 
+All of this is in our single memory structure and ontology.
 
 <img width="1414" height="937" alt="image" src="https://github.com/user-attachments/assets/8863b6d9-c043-4c75-b200-4f1759e7edaf" />
 
@@ -115,9 +119,9 @@ Supermemory comes built with plugins for Claude Code, Muse Code, Cursor, Codex, 
 
 <img width="844" height="484" alt="image" src="https://github.com/user-attachments/assets/ecb879a2-8652-495d-9228-f305a97ba603" />
 
-These plugins are implementations of the supermemory API, and they are open source! 
+These plugins are implementations of the supermemory API, and they are open source!
 
-You can find them here: 
+You can find them here:
 
 - Claude Code plugin: https://github.com/supermemoryai/claude-supermemory
 - Muse Code plugin: https://github.com/supermemoryai/muse-supermemory

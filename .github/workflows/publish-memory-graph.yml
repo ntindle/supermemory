@@ -4,7 +4,7 @@ on:
     push:
         branches:
             - main
-        paths: 
+        paths:
             - "packages/memory-graph/package.json"
 
 concurrency:
@@ -15,7 +15,7 @@ jobs:
     publish:
         runs-on: ubuntu-latest
         timeout-minutes: 15
-        permissions: 
+        permissions:
             contents: read
             id-token: write
         defaults:

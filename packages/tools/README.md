@@ -701,11 +701,11 @@ import { streamText } from "ai"
 const openrouter = createOpenRouter({ apiKey: process.env.OPENROUTER_API_KEY })
 
 const tools = {
-  searchMemories: searchMemoriesTool(apiKey, { 
+  searchMemories: searchMemoriesTool(apiKey, {
     namespace: userId,
     strict: true  // ✅ Required for OpenAI strict mode
   }),
-  addMemory: addMemoryTool(apiKey, { 
+  addMemory: addMemoryTool(apiKey, {
     namespace: userId,
     strict: true
   }),

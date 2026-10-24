@@ -367,7 +367,7 @@ class SupermemoryCartesiaAgent:
 
     async def _enrich_event_with_memories(self, event: Any) -> tuple[Any, Optional[str]]:
         """Enrich event by retrieving memories.
-        
+
         Returns:
             Tuple of (event, memory_context) - memory_context is None if no memories found.
             The event is returned unchanged; memory injection happens at the agent level.

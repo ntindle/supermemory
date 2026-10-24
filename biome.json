@@ -18,6 +18,7 @@
 	"files": {
 		"includes": [
 			"**",
+			"!patches/postgres/**",
 			"!**/node_modules/",
 			"!**/.next/",
 			"!**/.contentlayer/",
