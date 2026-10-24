@@ -19,6 +19,14 @@ binaries or imply access to the hosted service's implementation. The upstream
 server license remains applicable. The imported patch layer retains its
 [MIT license](patches/postgres/LICENSE).
 
+## Recall quality
+
+[`evals/recall/`](evals/recall/README.md) measures source retrieval, grounded answer
+accuracy, isolation, latency and context size on fixed synthetic memories. It
+includes no-memory and oracle controls, strict grading, comparison checks and a
+v3/v4 adapter for MemoryBench. The evaluator runs against disposable copies of
+the published image; it does not change the server or require production data.
+
 ## Development
 
 The patch is an independent Bun package outside the SDK/web workspaces. It keeps

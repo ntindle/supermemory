@@ -1,0 +1,20 @@
+{
+  "name": "factory-recall-eval",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "bun test",
+    "check-types": "tsc --noEmit",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "eval": "bun run cli.ts"
+  },
+  "dependencies": {
+    "js-tiktoken": "1.0.21"
+  },
+  "devDependencies": {
+    "@types/bun": "1.3.4",
+    "typescript": "5.9.3",
+    "prettier": "3.6.2"
+  }
+}
