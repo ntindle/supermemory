@@ -111,7 +111,10 @@ export async function open({
     idleTimeoutMillis: 30000,
     application_name: "factory-supermemory",
     statement_timeout: 30000,
-    options: "-c timezone=UTC",
+    // A default HNSW scan yields ef_search (40) neighbours across every container tag before
+    // the tag filter runs, so a tag whose matches sat behind other tags' memories got no
+    // results. Iterative scans (pgvector 0.8) keep reading the index until LIMIT is met.
+    options: "-c timezone=UTC -c hnsw.iterative_scan=strict_order",
   });
   pool.on("error", (error) =>
     log(`[factory-postgres] idle connection failed (${safeCode(error)})`),

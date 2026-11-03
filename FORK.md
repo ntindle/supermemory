@@ -8,7 +8,8 @@ and container launcher remain in [ntindle/unraid-apps](https://github.com/ntindl
 
 [`patches/postgres/`](patches/postgres/README.md) contains the checksum-pinned 0.0.8
 PostgreSQL adapter, offline lossless migration, durable capture queue and workflow
-handoff fixes. Its runtime modules were moved unchanged from `unraid-apps` commit
+handoff fixes, near-duplicate collapsing in recall, and a minimal MCP endpoint for
+agent plugins (`recall.mjs`). Its runtime modules were moved unchanged from `unraid-apps` commit
 `fc98a1c`, with the same tested binary output hash. Build instructions, pins,
 operational limits and the original validation evidence are in that directory.
 

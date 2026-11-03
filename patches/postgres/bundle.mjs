@@ -8,6 +8,7 @@ const runtimeFiles = [
   "runtime.mjs",
   "ingestion-queue.mjs",
   "workflow-outbox.mjs",
+  "recall.mjs",
   "launch.sh",
   "pins.json",
 ];

@@ -87,6 +87,40 @@ test("transactions keep one connection, isolate failures, and support savepoints
   );
 });
 
+test("tag-filtered vector search reads past other tags' nearer neighbours", async () => {
+  // 200 rows of another tag sit nearer the query than all 10 of ours.
+  await client.query(
+    "CREATE TABLE recall_probe (id int PRIMARY KEY, tag text, e vector(2)); INSERT INTO recall_probe SELECT i, CASE WHEN i <= 200 THEN 'other' ELSE 'mine' END, ARRAY[i, 0]::real[]::vector FROM generate_series(1, 210) i; CREATE INDEX ON recall_probe USING hnsw (e vector_l2_ops)",
+  );
+  const search = async (db) =>
+    db.transaction(async (tx) => {
+      await tx.query("SET LOCAL enable_seqscan = off");
+      return (
+        await tx.query(
+          "SELECT id FROM recall_probe WHERE tag = 'mine' ORDER BY e <-> '[0,0]' LIMIT 10",
+        )
+      ).rows.length;
+    });
+  const r = await start();
+  expect(
+    (await r.db.query("SELECT current_setting('hnsw.iterative_scan') AS v"))
+      .rows[0].v,
+  ).toBe("strict_order");
+  expect(await search(r.db)).toBe(10);
+  // Without the setting, the index returns only the 40 nearest rows, none of them ours.
+  await client.query("BEGIN");
+  try {
+    await client.query("SET LOCAL enable_seqscan = off");
+    const plain = await client.query(
+      "SELECT id FROM recall_probe WHERE tag = 'mine' ORDER BY e <-> '[0,0]' LIMIT 10",
+    );
+    expect(plain.rows.length).toBe(0);
+  } finally {
+    await client.query("ROLLBACK");
+  }
+  await client.query("DROP TABLE recall_probe");
+});
+
 test("the pool runs independent requests concurrently", async () => {
   const r = await start({ max: 6 });
   const started = performance.now();
