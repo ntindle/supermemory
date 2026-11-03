@@ -31,19 +31,24 @@ of a populated store. Generated binaries, databases, keys and logs stay outside 
   remain in the request path.
 - Recall collapses near-duplicate memories (`recall.mjs`). Extraction stores one
   rewording of a fact per session that mentions it, so a top-N result was often
-  one fact repeated. `POST /v4/search` and `POST /v4/profile` keep an item only
-  when its word set overlaps every higher-ranked kept item's by less than half
-  (Jaccard). Search over-fetches so it still returns the requested limit; the
-  profile's dynamic list also drops repeats of static facts. Opt out per request
-  with `x-factory-recall-dedupe: off`, or for the server with
-  `FACTORY_RECALL_DEDUPE=off`.
+  one fact repeated. `POST /v4/search` and `POST /v4/profile` drop an item that
+  repeats a higher-ranked one: their word sets overlap (Jaccard) by at least 0.7,
+  or by at least 0.5 with twelve or more words in common, and the item names
+  nothing the kept one lacks (numbers, capitalized names, backticked paths).
+  Word overlap alone merged facts that share a sentence frame, such as two
+  versions or two products in one template; on 585 live result pairs those now
+  stay apart while rewordings still collapse. A long sentence that differs only
+  in one lowercase name still merges. Search over-fetches so it still returns
+  the requested limit; the profile's dynamic list also drops repeats of static
+  facts. Opt out per request with `x-factory-recall-dedupe: off`, or for the
+  server with `FACTORY_RECALL_DEDUPE=off`.
 - A minimal MCP endpoint at `/mcp` (streamable HTTP, JSON responses, no session
   state). Upstream Lite serves none, so agent plugins' tool servers failed. The
   tools carry the plugin names `search_memory`, `add_memory`, `listSpaces`,
   `listMemories`, `getDocument` and `whoAmI`, and act through the server's own
-  API with the caller's key: a request without a valid key gets 401, and every
-  tag rule and the host guard still apply. Searches and saves use one container
-  tag each.
+  request path with the caller's key: a request without a valid key gets 401
+  whatever its Host, and every tag rule still applies. Searches and saves use
+  one container tag each.
 
 The database's document and memory tables are **not encrypted by this patch**.
 Use appropriate encrypted storage/backups and database transport for your setup.

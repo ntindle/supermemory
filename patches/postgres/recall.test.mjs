@@ -3,8 +3,10 @@ import {
   dedupeProfile,
   dedupeSearch,
   distinct,
+  fetchLimit,
   mcp,
   recall,
+  resultText,
   TOOLS,
 } from "./recall.mjs";
 
@@ -51,6 +53,43 @@ test("distinct keeps the ranking and drops rewordings of a kept item", () => {
   expect(distinct([other, ...reworded])).toEqual([other, fact]);
   expect(distinct(["a b c", "d e f"])).toEqual(["a b c", "d e f"]);
   expect(distinct([], (x) => x)).toEqual([]);
+});
+
+test("facts that differ in a name, number, file or short swap stay apart", () => {
+  const apart = [
+    [
+      "The hosted plan includes Postgres 17 and nightly backups.",
+      "The hosted plan includes Redis 17 and nightly backups.",
+    ],
+    [
+      "Applying release v8.0.46 restarts the proxy.",
+      "Applying release v8.0.48 restarts the proxy.",
+    ],
+    [
+      "In the notes repository, `docs/upgrade.md` documents moving every install to the new release, while `scripts/upgrade/` holds its steps.",
+      "In the notes repository, `docs/pairing.md` documents pairing every install to the new release servers, while `scripts/pairing/` holds its steps.",
+    ],
+    // Few shared words: below SHORT_DUPLICATE this needs LONG_SHARED of them.
+    [
+      "The user has a hotel booked in Lisbon for the conference.",
+      "The user has flights booked to Lisbon for the conference.",
+    ],
+  ];
+  for (const pair of apart) expect(distinct(pair)).toEqual(pair);
+});
+
+test("rewordings collapse, short or long, and empty texts never do", () => {
+  const short = [
+    "Changing the proxy configuration requires the owner's approval.",
+    "Changing proxy configuration requires the owner's prior approval.",
+  ];
+  expect(distinct(short)).toEqual([short[0]]);
+  const long = [
+    "Release commits are unsigned and use `git commit --no-gpg-sign` with the author set to Sam Rivera <sam@example.com>.",
+    "Commits for releases should be unsigned with `git commit --no-gpg-sign` and authored as Sam Rivera <sam@example.com>.",
+  ];
+  expect(distinct(long)).toEqual([long[0]]);
+  expect(distinct([{}, {}], resultText)).toHaveLength(2);
 });
 
 test("search results collapse, trim to the limit and keep total consistent", () => {
@@ -113,6 +152,20 @@ test("/v4/search over-fetches, then returns the requested number of distinct res
   expect(data.results.map((r) => r.memory)).toEqual([fact, other]);
   expect(data.total).toBe(2);
   expect(data.timing).toBe(3);
+});
+
+test("over-fetching never asks upstream for fewer results than requested", async () => {
+  expect([1, 2, 20, 50, 80].map(fetchLimit)).toEqual([3, 6, 50, 50, 80]);
+  const app = fakeApp({ "POST /v4/search": () => [200, { results: [] }] });
+  await recall(
+    new Request("http://guard/v4/search", {
+      method: "POST",
+      body: JSON.stringify({ q: "x", containerTag: "t", limit: 80 }),
+    }),
+    {},
+    app,
+  );
+  expect(app.calls[0].body.limit).toBe(80);
 });
 
 test("the opt-out header, errors and other routes pass through untouched", async () => {
@@ -307,6 +360,67 @@ test("search_memory searches one tag with the caller's key and returns distinct 
     containerTag: "repo_x__1",
     limit: 9,
   });
+});
+
+test("search_memory follows the server's FACTORY_RECALL_DEDUPE=off", async () => {
+  const app = mcpApp({
+    "POST /v4/search": () => [
+      200,
+      { results: reworded.map((memory) => ({ memory })) },
+    ],
+  });
+  const before = process.env.FACTORY_RECALL_DEDUPE;
+  process.env.FACTORY_RECALL_DEDUPE = "off";
+  try {
+    const reply = await (
+      await mcp(
+        rpc({
+          jsonrpc: "2.0",
+          id: 5,
+          method: "tools/call",
+          params: {
+            name: "search_memory",
+            arguments: { query: "port", containerTag: "t", limit: 3 },
+          },
+        }),
+        {},
+        app,
+      )
+    ).json();
+    expect(reply.result.content[0].text).toContain("3 memories");
+    expect(app.calls.find((c) => c.path === "/v4/search").body.limit).toBe(3);
+  } finally {
+    if (before === undefined) delete process.env.FACTORY_RECALL_DEDUPE;
+    else process.env.FACTORY_RECALL_DEDUPE = before;
+  }
+});
+
+test("MCP tools call the server path they are given, not upstream directly", async () => {
+  const app = mcpApp();
+  const seen = [];
+  // Stands in for IngestionQueue.fetch, which reports a pending append as "queued".
+  const server = async (request) => {
+    const route = `${request.method} ${new URL(request.url).pathname}`;
+    seen.push(route);
+    if (route === "GET /v3/documents/doc1")
+      return Response.json({ id: "doc1", status: "queued", content: "x" });
+    return app.fetch(request);
+  };
+  const reply = await (
+    await recall(
+      rpc({
+        jsonrpc: "2.0",
+        id: 10,
+        method: "tools/call",
+        params: { name: "getDocument", arguments: { id: "doc1" } },
+      }),
+      {},
+      app,
+      server,
+    )
+  ).json();
+  expect(reply.result.content[0].text).toContain("Document doc1 (queued)");
+  expect(seen).toEqual(["GET /v3/session", "GET /v3/documents/doc1"]);
 });
 
 test("tools report bad input as tool errors, and unknown names as protocol errors", async () => {

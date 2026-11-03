@@ -250,8 +250,11 @@ export class IngestionQueue {
   }
   async fetch(request, env, app) {
     this.bind(app, env);
-    // Near-duplicate collapsing for /v4/search and /v4/profile, and the /mcp endpoint.
-    const handled = await recall(request, env, app);
+    // Near-duplicate collapsing for /v4/search and /v4/profile, and the /mcp endpoint, whose
+    // tools call back through this method for their internal API requests.
+    const handled = await recall(request, env, app, (internal) =>
+      this.fetch(internal, env, app),
+    );
     if (handled) return handled;
     const response = await app.fetch(request, env);
     if (

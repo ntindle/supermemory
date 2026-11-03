@@ -2,10 +2,10 @@
 //
 // 1. Near-duplicate collapsing. Extraction stores one rewording of a fact per session that
 //    mentions it, so a top-N search or profile is often one fact repeated. Responses of
-//    POST /v4/search and POST /v4/profile keep an item only when its word set overlaps every
-//    higher-ranked kept item's by less than NEAR_DUPLICATE (Jaccard). /v4/search over-fetches to
-//    still return the requested limit. Opt out per request with `x-factory-recall-dedupe: off`,
-//    or for the server with FACTORY_RECALL_DEDUPE=off.
+//    POST /v4/search and POST /v4/profile drop an item that repeats a higher-ranked kept one
+//    (`repeats`). /v4/search over-fetches to still return the requested limit. Opt out per
+//    request with `x-factory-recall-dedupe: off`, or for the server with
+//    FACTORY_RECALL_DEDUPE=off.
 // 2. A minimal MCP endpoint at /mcp (streamable HTTP, JSON responses, stateless). Upstream Lite
 //    serves no /mcp, so the Claude plugin's tool server failed and its recall hints named a tool
 //    that did not exist. The tools use the plugin's names and act through the server's own
@@ -13,7 +13,15 @@
 import fs from "node:fs";
 import { randomUUID } from "node:crypto";
 
+// An item repeats a kept one when their word sets overlap (Jaccard) by at least SHORT_DUPLICATE,
+// or by at least NEAR_DUPLICATE with LONG_SHARED or more words in common, and it names nothing
+// the kept one lacks (`names`). Calibrated on 585 live result pairs: Jaccard alone merged facts
+// that share a sentence frame ("models include Claude Opus 5.5" / "Claude Sonnet 5.5", "Gateway
+// v8.0.46" / "v8.0.48", "a hotel booked" / "flights booked"). Known limit: two long sentences
+// that differ only in one lowercase name (a machine called "fate" or "tower") still merge.
 export const NEAR_DUPLICATE = 0.5;
+export const SHORT_DUPLICATE = 0.7;
+export const LONG_SHARED = 12;
 const OVERFETCH = 3;
 const MAX_FETCH = 50;
 const MAX_TEXT = 1500;
@@ -21,39 +29,61 @@ const MAX_DOCUMENT = 20000;
 const INTERNAL = "http://factory-supermemory.internal";
 const PROTOCOLS = ["2025-06-18", "2025-03-26", "2024-11-05"];
 
-export function wordSet(text) {
-  return new Set(
-    String(text ?? "")
-      .toLowerCase()
-      .match(/[\p{L}\p{N}]+/gu) || [],
+const words = (text) =>
+  (String(text ?? "").match(/[\p{L}\p{N}]+/gu) || []).map((word) =>
+    word.toLowerCase(),
   );
+
+export const wordSet = (text) => new Set(words(text));
+
+// Numbers, capitalized words after a sentence's first word, and the words of a backticked file
+// name, path or package. A repeat may reword a kept item but not add one of these.
+export function names(text) {
+  const value = String(text ?? "");
+  const found = new Set();
+  for (const [, span] of value.matchAll(/`([^`]+)`/g))
+    if (/[./]/.test(span)) for (const word of words(span)) found.add(word);
+  for (const sentence of value.split(/(?<=[.!?;:])\s+/))
+    (sentence.match(/[\p{L}\p{N}]+/gu) || []).forEach((word, i) => {
+      if (/\p{N}/u.test(word) || (i > 0 && /^\p{Lu}/u.test(word)))
+        found.add(word.toLowerCase());
+    });
+  return found;
 }
 
-function overlap(a, b) {
-  if (!a.size && !b.size) return 1;
+const fingerprint = (text) => ({ words: wordSet(text), names: names(text) });
+
+export function repeats(item, kept) {
+  if (!item.words.size) return false;
   let shared = 0;
-  for (const word of a) if (b.has(word)) shared++;
-  return shared / (a.size + b.size - shared);
+  for (const word of item.words) if (kept.words.has(word)) shared++;
+  const similarity = shared / (item.words.size + kept.words.size - shared);
+  if (similarity < NEAR_DUPLICATE) return false;
+  if (similarity < SHORT_DUPLICATE && shared < LONG_SHARED) return false;
+  for (const name of item.names) if (!kept.words.has(name)) return false;
+  return true;
 }
 
-// Keeps order (the server's ranking); drops an item that repeats a kept one. `seed` holds word
-// sets that already count as kept (profile: static facts against dynamic ones).
+// Keeps order (the server's ranking); drops an item that repeats a kept one. `seed` holds texts
+// that already count as kept (profile: static facts against dynamic ones).
 export function distinct(items, textOf = (item) => item, seed = []) {
-  const kept = [];
-  const sets = [...seed];
+  const kept = seed.map(fingerprint);
+  const out = [];
   for (const item of items) {
-    const words = wordSet(textOf(item));
-    if (sets.some((set) => overlap(words, set) >= NEAR_DUPLICATE)) continue;
-    kept.push(item);
-    sets.push(words);
+    const print = fingerprint(textOf(item));
+    if (kept.some((other) => repeats(print, other))) continue;
+    out.push(item);
+    kept.push(print);
   }
-  return kept;
+  return out;
 }
 
 export const resultText = (r) =>
   [r?.memory, r?.chunk, r?.content, r?.text].find(
     (value) => typeof value === "string" && value.trim(),
   ) || "";
+
+const factText = (fact) => (typeof fact === "string" ? fact : resultText(fact));
 
 export function dedupeSearch(data, limit) {
   if (!Array.isArray(data?.results)) return data;
@@ -68,11 +98,11 @@ export function dedupeProfile(data) {
   if (profile && typeof profile === "object") {
     let seed = [];
     if (Array.isArray(profile.static)) {
-      profile.static = distinct(profile.static);
-      seed = profile.static.map(wordSet);
+      profile.static = distinct(profile.static, factText);
+      seed = profile.static.map(factText);
     }
     if (Array.isArray(profile.dynamic))
-      profile.dynamic = distinct(profile.dynamic, (x) => x, seed);
+      profile.dynamic = distinct(profile.dynamic, factText, seed);
   }
   if (Array.isArray(data?.searchResults?.results))
     data.searchResults.results = distinct(
@@ -81,6 +111,11 @@ export function dedupeProfile(data) {
     );
   return data;
 }
+
+// Asks upstream for more results than requested so collapsing still fills the limit, and never
+// for fewer than the caller asked for.
+export const fetchLimit = (limit) =>
+  Math.max(limit, Math.min(MAX_FETCH, limit * OVERFETCH));
 
 function dedupeEnabled(request) {
   return (
@@ -95,11 +130,23 @@ function rewrapped(data, response) {
   return Response.json(data, { status: response.status, headers });
 }
 
-// Returns a Response when this module handles the request, otherwise null.
-export async function recall(request, env, app) {
+// Serves a request the way the patched server does: this module first, then upstream.
+async function serve(request, env, app) {
+  return (await recall(request, env, app)) ?? app.fetch(request, env);
+}
+
+// Returns a Response when this module handles the request, otherwise null. `server` serves the
+// MCP tools' internal API calls; IngestionQueue.fetch passes its own fetch, so those calls take
+// the same path as an HTTP client's (collapsing, queued-append status) and pass upstream's auth.
+export async function recall(
+  request,
+  env,
+  app,
+  server = (internal) => serve(internal, env, app),
+) {
   const url = new URL(request.url);
   if (url.pathname === "/mcp" || url.pathname === "/mcp/")
-    return mcp(request, env, app);
+    return mcp(request, env, app, server);
   if (request.method !== "POST" || !dedupeEnabled(request)) return null;
   if (url.pathname === "/v4/search") {
     const body = await request
@@ -116,10 +163,7 @@ export async function recall(request, env, app) {
       forwarded = new Request(request.url, {
         method: "POST",
         headers,
-        body: JSON.stringify({
-          ...body,
-          limit: Math.min(MAX_FETCH, Math.max(limit, limit * OVERFETCH)),
-        }),
+        body: JSON.stringify({ ...body, limit: fetchLimit(limit) }),
       });
     }
     const response = await app.fetch(forwarded, env);
@@ -166,7 +210,7 @@ function credentials(request) {
 
 // The internal Host is not a loopback name, so upstream checks the caller's key as usual.
 async function api(context, method, route, body) {
-  const response = await context.app.fetch(
+  const response = await context.server(
     new Request(INTERNAL + route, {
       method,
       headers: {
@@ -176,7 +220,6 @@ async function api(context, method, route, body) {
       },
       body: body === undefined ? undefined : JSON.stringify(body),
     }),
-    context.env,
   );
   const text = await response.text();
   let data = null;
@@ -228,7 +271,7 @@ export const TOOLS = [
     name: "search_memory",
     title: "Search memories",
     description:
-      "Search this self-hosted Supermemory store for memories relevant to a question. Searches one container tag; near-duplicate memories are collapsed. Cite results as coming from supermemory.",
+      "Search this self-hosted Supermemory store for memories relevant to a question. Searches one container tag; the server collapses rewordings of the same memory. Cite results as coming from supermemory.",
     inputSchema: {
       type: "object",
       properties: {
@@ -252,13 +295,14 @@ export const TOOLS = [
       if (!query) throw new ToolError("query is required");
       const containerTag = needTag(args);
       const limit = clampInt(args.limit, 1, 20, 8);
+      // The server path over-fetches and collapses (unless FACTORY_RECALL_DEDUPE=off).
       const result = await api(context, "POST", "/v4/search", {
         q: query.slice(0, 1000),
         containerTag,
-        limit: Math.min(MAX_FETCH, limit * OVERFETCH),
+        limit,
       });
       if (!result.ok) failed(result, "Search");
-      const hits = dedupeSearch(result.data || {}, limit).results || [];
+      const hits = (result.data?.results || []).slice(0, limit);
       if (!hits.length)
         return `No memories in ${containerTag} matched "${short(query, 120)}".`;
       const lines = hits.map((r, i) => {
@@ -517,7 +561,12 @@ async function dispatch(message, context) {
   }
 }
 
-export async function mcp(request, env, app) {
+export async function mcp(
+  request,
+  env,
+  app,
+  server = (internal) => serve(internal, env, app),
+) {
   const sessionId = request.headers.get("mcp-session-id");
   if (request.method === "DELETE") return new Response(null, { status: 204 });
   if (request.method !== "POST")
@@ -525,7 +574,7 @@ export async function mcp(request, env, app) {
       status: 405,
       headers: { Allow: "POST, DELETE" },
     });
-  const context = { app, env, credentials: credentials(request) };
+  const context = { server, credentials: credentials(request) };
   const unauthorized = (status) =>
     Response.json(
       jsonRpc(null, {
