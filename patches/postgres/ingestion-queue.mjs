@@ -13,6 +13,7 @@ import {
 import fs from "node:fs";
 import path from "node:path";
 import { WorkflowOutbox } from "./workflow-outbox.mjs";
+import { recall } from "./recall.mjs";
 
 const ID = "sm_factory_delivery_id",
   PROOF = "sm_factory_delivery_proof";
@@ -249,6 +250,9 @@ export class IngestionQueue {
   }
   async fetch(request, env, app) {
     this.bind(app, env);
+    // Near-duplicate collapsing for /v4/search and /v4/profile, and the /mcp endpoint.
+    const handled = await recall(request, env, app);
+    if (handled) return handled;
     const response = await app.fetch(request, env);
     if (
       request.method !== "GET" ||
