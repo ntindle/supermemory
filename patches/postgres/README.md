@@ -29,6 +29,14 @@ of a populated store. Generated binaries, databases, keys and logs stay outside 
 - Deleting a document cascades to its deferred inputs. A stale delivery cannot
   create it again. Authentication, host guard and upstream validation/licensing
   remain in the request path.
+- Vector searches use pgvector 0.8's iterative HNSW scans
+  (`hnsw.iterative_scan=strict_order` on every app connection). A default scan
+  yields the 40 nearest rows across all container tags before the tag filter
+  runs, so a tag whose matches sat behind other tags' memories returned nothing:
+  on the 2026-11-03 store, searching the factory tag for "pairing", "code" or
+  "pairing code" gave 0 results although its best matches scored 0.72 to 0.77.
+  The scan stops after pgvector's default 20,000 rows, so a tag of a few dozen
+  memories in a large store can still get fewer results than requested.
 - Recall collapses near-duplicate memories (`recall.mjs`). Extraction stores one
   rewording of a fact per session that mentions it, so a top-N result was often
   one fact repeated. `POST /v4/search` and `POST /v4/profile` drop an item that
