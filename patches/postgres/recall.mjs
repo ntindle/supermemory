@@ -13,15 +13,19 @@
 import fs from "node:fs";
 import { randomUUID } from "node:crypto";
 
-// An item repeats a kept one when their word sets overlap (Jaccard) by at least SHORT_DUPLICATE,
-// or by at least NEAR_DUPLICATE with LONG_SHARED or more words in common, and it names nothing
-// the kept one lacks (`names`). Calibrated on 585 live result pairs: Jaccard alone merged facts
-// that share a sentence frame ("models include Claude Opus 5.5" / "Claude Sonnet 5.5", "Gateway
-// v8.0.46" / "v8.0.48", "a hotel booked" / "flights booked"). Known limit: two long sentences
-// that differ only in one lowercase name (a machine called "fate" or "tower") still merge.
+// An item repeats a kept one when both or neither negate, it names nothing the kept one lacks
+// (`names`), and their word sets overlap (Jaccard) by at least SHORT_DUPLICATE, or by at least
+// NEAR_DUPLICATE with LONG_SHARED or more words in common, or by at least CONTAINED with every
+// content word of the item already in the kept one (a rewording or shorter restatement).
+// Calibrated on live result pairs: Jaccard alone merged facts that share a sentence frame
+// ("models include Claude Opus 5.5" / "Claude Sonnet 5.5", "Gateway v8.0.46" / "v8.0.48", "a
+// hotel booked" / "flights booked") and contradictions ("restarts" / "never restarts"). Known
+// limit: two long sentences that differ only in one lowercase name (a machine called "fate" or
+// "tower") still merge.
 export const NEAR_DUPLICATE = 0.5;
 export const SHORT_DUPLICATE = 0.7;
 export const LONG_SHARED = 12;
+export const CONTAINED = 0.3;
 const OVERFETCH = 3;
 const MAX_FETCH = 50;
 const MAX_TEXT = 1500;
@@ -51,16 +55,45 @@ export function names(text) {
   return found;
 }
 
-const fingerprint = (text) => ({ words: wordSet(text), names: names(text) });
+// Words that carry no fact of their own. Negations, numbers and names are never in this list.
+const FUNCTION_WORDS = new Set(
+  "a an the and or but of to in on at by for with from as is are was were be been being it its this that these those than then so do does did has have had can could should must may might will would also into onto via per their them they he she his her we our you your i rather instead which who whom whose what when where while there here".split(
+    " ",
+  ),
+);
+// "t" is the end of "don't", "isn't" and "can't"; "rather" and "instead" phrase a "not".
+const NEGATIONS = new Set(
+  "not no never without none nor cannot t rather instead nobody nothing neither nowhere".split(
+    " ",
+  ),
+);
+const singular = (word) =>
+  word.length > 3 && word.endsWith("s") && !word.endsWith("ss")
+    ? word.slice(0, -1)
+    : word;
+
+function fingerprint(text) {
+  const all = wordSet(text);
+  return {
+    words: all,
+    names: names(text),
+    content: new Set(
+      [...all].filter((word) => !FUNCTION_WORDS.has(word)).map(singular),
+    ),
+    negated: [...all].some((word) => NEGATIONS.has(word)),
+  };
+}
 
 export function repeats(item, kept) {
-  if (!item.words.size) return false;
+  if (!item.words.size || item.negated !== kept.negated) return false;
+  for (const name of item.names) if (!kept.words.has(name)) return false;
   let shared = 0;
   for (const word of item.words) if (kept.words.has(word)) shared++;
   const similarity = shared / (item.words.size + kept.words.size - shared);
-  if (similarity < NEAR_DUPLICATE) return false;
-  if (similarity < SHORT_DUPLICATE && shared < LONG_SHARED) return false;
-  for (const name of item.names) if (!kept.words.has(name)) return false;
+  if (similarity >= SHORT_DUPLICATE) return true;
+  if (similarity >= NEAR_DUPLICATE && shared >= LONG_SHARED) return true;
+  if (similarity < CONTAINED || !item.content.size) return false;
+  for (const word of item.content) if (!kept.content.has(word)) return false;
   return true;
 }
 

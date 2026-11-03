@@ -78,6 +78,27 @@ test("facts that differ in a name, number, file or short swap stay apart", () =>
   for (const pair of apart) expect(distinct(pair)).toEqual(pair);
 });
 
+test("a rewording that adds no content word collapses; a contradiction never does", () => {
+  const rewording = [
+    "Apps connect to servers using pairing codes or links, not SSH environments.",
+    "Apps connect to servers by pairing code/link rather than as SSH environments.",
+  ];
+  expect(distinct(rewording)).toEqual([rewording[0]]);
+  const restatement = [
+    "Release v8.0.46 includes streaming and security fixes; applying it disconnects agents.",
+    "Applying release v8.0.46 disconnects agents.",
+  ];
+  expect(distinct(restatement)).toEqual([restatement[0]]);
+  // The shorter one first: the longer adds facts, so both stay.
+  expect(distinct([...restatement].reverse())).toHaveLength(2);
+  const contradiction = [
+    "The proxy restarts after an upgrade.",
+    "The proxy never restarts after an upgrade.",
+  ];
+  expect(distinct(contradiction)).toEqual(contradiction);
+  expect(distinct([...contradiction].reverse())).toHaveLength(2);
+});
+
 test("rewordings collapse, short or long, and empty texts never do", () => {
   const short = [
     "Changing the proxy configuration requires the owner's approval.",
